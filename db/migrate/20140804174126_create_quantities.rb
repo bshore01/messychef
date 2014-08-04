@@ -1,7 +1,6 @@
-class CreateQuantities < ActiveRecord::Migration
+class CreateUnits < ActiveRecord::Migration
   def change
-    create_table :quantities do |t|
-      t.float :amount
+    create_table :units do |t|
       t.string :unit
 
       t.timestamps
