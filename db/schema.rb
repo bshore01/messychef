@@ -11,17 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 0) do
-=======
 ActiveRecord::Schema.define(version: 20140804174307) do
->>>>>>> 2a456dd8ff40774a5a3561f19a486067a686919c
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-=======
   create_table "cookbooks", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -82,5 +76,4 @@ ActiveRecord::Schema.define(version: 20140804174307) do
     t.datetime "updated_at"
   end
 
->>>>>>> 2a456dd8ff40774a5a3561f19a486067a686919c
 end
