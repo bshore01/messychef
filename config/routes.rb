@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  get 'welcome/hello'
 
-  root :to => "welcome#hello"
+  resources :users
+
+  resources :cookbooks
+
+  resources :ingredients
+
+  resources :recipes
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
