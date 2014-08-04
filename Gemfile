@@ -38,4 +38,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'wit_ruby'
+gem 'wit'
+
+gem 'multi_json'
+
+gem 'figaro'
