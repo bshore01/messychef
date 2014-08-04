@@ -71,6 +71,12 @@ puts "Creating directions..."
 @fry_the_chicken = Direction.create(sequence: 2, description: "fry the chicken")
 
 @chocolate_cake.directions = [@melt_the_chocolate, @add_the_flour, @bake_the_cake]
-@banana_pudding.directions = [@mash_the_bananas, @let_sit_in_the_fridge]
+@banana_pudding.directions = [@mash_the_bananas, @let_sit_in_fridge]
 @fried_chicken.directions = [@batter_the_chicken, @fry_the_chicken]
 
+
+puts "Associating Ingredients with Recipes"
+
+@chocolate_cake.ingredients = [@chocolate, @eggs, @flour, @butter, @banana, @baking_powder, @milk] 
+@fried_chicken.ingredients = [@chicken, @oil, @crumbled_bread]
+@banana_pudding.ingredients = [@rice, @water, @orange, @eggs, @flour, @butter]
