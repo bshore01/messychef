@@ -38,13 +38,6 @@ ActiveRecord::Schema.define(version: 20140804174307) do
     t.datetime "updated_at"
   end
 
-  create_table "quantities", force: true do |t|
-    t.float    "amount"
-    t.string   "unit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "recipe_cookbooks", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "cookbook_id"
@@ -52,10 +45,11 @@ ActiveRecord::Schema.define(version: 20140804174307) do
     t.datetime "updated_at"
   end
 
-  create_table "recipe_ingredient_quantities", force: true do |t|
+  create_table "recipe_ingredient_units", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
-    t.integer  "quantity_id"
+    t.integer  "unit_id"
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +58,12 @@ ActiveRecord::Schema.define(version: 20140804174307) do
     t.string   "title"
     t.integer  "creator_id"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "units", force: true do |t|
+    t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
