@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    
     # set creator_id to user
   end
 
@@ -26,7 +27,6 @@ class RecipesController < ApplicationController
   # POST /recipes.json
   def create
     @recipe = Recipe.new(recipe_params)
-
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
@@ -70,6 +70,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params[:recipe]
+      params.require(:recipe).permit(:title, :description, :riu)
     end
 end
