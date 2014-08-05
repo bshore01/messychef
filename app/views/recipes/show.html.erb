@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <%= @recipe.title %><br>
+  <%= @recipe.description %><br>
+  <%= User.find(@recipe.creator_id).first_name + User.find(@recipe.creator_id).last_name   %>
+</div>
+
+<div>
+  <% @recipe.recipe_ingredient_units.each do |riu| %>
+    <%= riu.amount %> 
+    <% if riu.unit_id %>
+        <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) %>
+    <% end %>
+    <%= Ingredient.find(riu.ingredient_id).name %>
+    <br>
+  <% end %>
+</div>
+
+<br>
+
+<div>
+  <% @recipe.directions.sort_by { |d| d.sequence }.each do |direction| %>
+    <%= direction.sequence %>.
+    <%= direction.description.capitalize[0] + direction.description.slice(1..-1)  %><br> 
+  <% end %>
+</div>
+
+<br>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>

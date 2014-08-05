@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    # set creator_id to user
   end
 
   # GET /recipes/1/edit
