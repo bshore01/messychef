@@ -44,7 +44,7 @@ puts "Creating Recipes..."
 @fried_chicken = Recipe.create(title: "Fried Chicken", creator_id: 3, description: "Deep-fried chicken in tomato sauce")
 
 
-puts "Creating Cookbook..."
+puts "Creating Cookbook...this associates users with cookbooks"
 
 @natalies_cookbook = Cookbook.create(user_id: 1, title: "Natalie's Cookbook", description: "Healthy recipes")
 @bens_cookbook = Cookbook.create(user_id: 2, title: "Ben's Cookbook", description: "Great recipes")
@@ -52,12 +52,12 @@ puts "Creating Cookbook..."
 @anas_cookbook = Cookbook.create(user_id: 4, title: "Ana's Cookbook", description: "Fruity recipes")
 
 
-puts "Creating RecipeCookbook..."
+puts "Creating RecipeCookbook...this associates recipes with cookbooks"
 
 @natalies_cookbook.recipes = [@chocolate_cake, @banana_pudding, @fried_chicken]
-@bens_cookbook = [@chocolate_cake, @banana_pudding, @fried_chicken]
-@kris_cookbook = [@chocolate_cake, @banana_pudding, @fried_chicken]
-@anas_cookbook = [@chocolate_cake, @banana_pudding, @fried_chicken]
+@bens_cookbook.recipes = [@chocolate_cake, @banana_pudding, @fried_chicken]
+@kris_cookbook.recipes = [@chocolate_cake, @banana_pudding, @fried_chicken]
+@anas_cookbook.recipes = [@chocolate_cake, @banana_pudding, @fried_chicken]
 
 
 puts "Creating directions..."
@@ -77,6 +77,33 @@ puts "Creating directions..."
 
 puts "Associating Ingredients with Recipes"
 
-@chocolate_cake.ingredients = [@chocolate, @eggs, @flour, @butter, @banana, @baking_powder, @milk] 
-@fried_chicken.ingredients = [@chicken, @oil, @crumbled_bread]
-@banana_pudding.ingredients = [@rice, @water, @orange, @eggs, @flour, @butter]
+@chocolate_cake.ingredients = [@chocolate, @eggs, @flour, @butter, @baking_powder, @milk] 
+@fried_chicken.ingredients = [@chicken, @oil, @crumbled_bread, @rice]
+@banana_pudding.ingredients = [@banana, @water, @orange, @eggs, @flour, @butter]
+
+@chocolate_cake.recipe_ingredient_units[0].update(unit_id: 2, amount: 1)
+@chocolate_cake.recipe_ingredient_units[1].update(amount: 2)
+@chocolate_cake.recipe_ingredient_units[2].update(unit_id: 3, amount: 3)
+@chocolate_cake.recipe_ingredient_units[3].update(unit_id: 2, amount: 4)
+@chocolate_cake.recipe_ingredient_units[4].update(unit_id: 5, amount: 1)
+@chocolate_cake.recipe_ingredient_units[5].update(unit_id: 3, amount: 1)
+
+@fried_chicken.recipe_ingredient_units[0].update(amount: 1)
+@fried_chicken.recipe_ingredient_units[1].update(unit_id: 4, amount: 2)
+@fried_chicken.recipe_ingredient_units[2].update(unit_id: 3, amount: 1)
+@fried_chicken.recipe_ingredient_units[3].update(unit_id: 3, amount: 1)
+
+@banana_pudding.recipe_ingredient_units[0].update(amount: 10)
+@banana_pudding.recipe_ingredient_units[1].update(unit_id: 3, amount: 1)
+@banana_pudding.recipe_ingredient_units[2].update(amount: 1)
+@banana_pudding.recipe_ingredient_units[3].update(amount: 2)
+@banana_pudding.recipe_ingredient_units[4].update(unit_id: 7, amount: 10)
+@banana_pudding.recipe_ingredient_units[5].update(unit_id: 2, amount: 8)
+
+
+puts "Associating recipes with cookbooks"
+
+
+
+
+
