@@ -1,7 +1,7 @@
 <div>
   <%= @recipe.title %><br>
   <%= @recipe.description %><br>
-  <%= User.find(@recipe.creator_id).first_name + User.find(@recipe.creator_id).last_name   %>
+  <%= User.find(@recipe.creator_id).first_name + User.find(@recipe.creator_id).last_name if @recipe.creator_id %>
 </div>
 
 <div>
