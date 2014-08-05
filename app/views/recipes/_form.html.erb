@@ -1,27 +1,15 @@
-<form action="/recipes" method="post">
+<form action="/recipes" method="post" id="recipe_form">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     
-    Title: <input type="text" name="recipe[title]" value="">
-    Description: <input type="textarea" name="recipe[description]" value="">
-    <br>
+  Title: <input type="text" name="recipe[title]" value="">
+  Description: <input type="textarea" name="recipe[description]" value="">
+  <br>
 
-  <% (0..4).each do |i| %>
-    <select name="recipe[riu][<%= i %>][ingredient_id]">
-      <% Ingredient.all.each do |ingredient| %>
-        <option value="<%= ingredient.id %>"><%= ingredient.name %></option>
-      <% end %>
-    </select>
-
-    <input type="number" name="recipe[riu][<%= i %>][amount]" value="">
-   
-    <select name="recipe[riu][<%= i %>][unit_id]">
-      <% Unit.all.each do |unit| %>
-        <option value="<%= unit.id %>"><%= unit.unit %></option>
-      <% end %>
-    </select>
-
-    <br>
-
-  <% end %>
+  <div id="add_ingredients">
+    Add ingredients:
+  </div>
+  <button id="add_more_ingredients">+ Add ingredient</button><br>
 
   <input type="submit" value="Submit">
+
 </form>
