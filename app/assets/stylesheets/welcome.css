@@ -1,0 +1,25 @@
+
+.navbar { 
+    background:#eee; 
+    border:1px solid #666; 
+    height: 160px; 
+    left:0; 
+    position:fixed; 
+    width:100%; 
+    top:0; 
+}
+
+
+
+.recipe {
+    font-size: 40px;
+    padding-top: 160px;
+}
+
+.spacer {
+    height: 500px;
+}
+
+.bookmark {
+    font-size: 20px;
+}
