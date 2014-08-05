@@ -19,7 +19,8 @@ function addIngredient(){
   var numIngredients = $("#add_ingredients > div").length;
 
   $("#add_ingredients").append(
-    '<div id="ingredient-'+numIngredients+'">'+      
+    '<div id="ingredient-'+numIngredients+'">'+
+      '<button class="delete_this_ingredient">x</button>'+      
       '<select name="recipe[riu]['+numIngredients+'][ingredient_id]">'+
         '<% Ingredient.all.each do |ingredient| %>'+
           '<option value="<%= ingredient.id %>"><%= ingredient.name %></option>'+
@@ -33,9 +34,6 @@ function addIngredient(){
           '<option value="<%= unit.id %>"><%= unit.unit %></option>'+
         '<% end %>'+
       '</select>'+
-
-      '<button class="delete_this_ingredient">x</button>'+
-      '<br>'+
     '</div>'
   );
 }
