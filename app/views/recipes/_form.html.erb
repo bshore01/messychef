@@ -1,45 +1,27 @@
-<%= form_for(@recipe) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+<form action="/recipes" method="post">
+    
+    Title: <input type="text" name="recipe[title]" value="">
+    Description: <input type="textarea" name="recipe[description]" value="">
+    <br>
 
-      <ul>
-      <% @recipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <% (0..4).each do |i| %>
+    <select name="recipe[riu][<%= i %>][ingredient_id]">
+      <% Ingredient.all.each do |ingredient| %>
+        <option value="<%= ingredient.id %>"><%= ingredient.name %></option>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </select>
 
-  <div>
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %><br>
-        <%= f.label :description   %>
-        <%= f.text_area :description %><br>
-    </div>
-
-    <div>
-      <%  %>
-        <%= riu.amount %> 
-        <% if riu.unit_id %>
-            <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) %>
-        <% end %>
-        <%= Ingredient.find(riu.ingredient_id).name %>
-        <br>
+    <input type="number" name="recipe[riu][<%= i %>][amount]" value="">
+   
+    <select name="recipe[riu][<%= i %>][unit_id]">
+      <% Unit.all.each do |unit| %>
+        <option value="<%= unit.id %>"><%= unit.unit %></option>
       <% end %>
-    </div>
+    </select>
 
     <br>
 
-    <div>
-      <% @recipe.directions.sort_by { |d| d.sequence }.each do |direction| %>
-        <%= direction.sequence %>.
-        <%= direction.description.capitalize[0] + direction.description.slice(1..-1)  %><br> 
-      <% end %>
-    </div>
+  <% end %>
 
-      <%= f.submit %>
-  </div>
-
-<% end %>
+  <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,45 @@
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %><br>
+        <%= f.label :description   %>
+        <%= f.text_area :description %><br>
+    </div>
+
+    <div>
+      <%  %>
+        <%= riu.amount %> 
+        <% if riu.unit_id %>
+            <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) %>
+        <% end %>
+        <%= Ingredient.find(riu.ingredient_id).name %>
+        <br>
+      <% end %>
+    </div>
+
+    <br>
+
+    <div>
+      <% @recipe.directions.sort_by { |d| d.sequence }.each do |direction| %>
+        <%= direction.sequence %>.
+        <%= direction.description.capitalize[0] + direction.description.slice(1..-1)  %><br> 
+      <% end %>
+    </div>
+
+      <%= f.submit %>
+  </div>
+
+<% end %>
