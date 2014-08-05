@@ -1,27 +1,68 @@
-<form action="/recipes" method="post">
+<form action="/recipes" method="post" id="recipe_form">
     
-    Title: <input type="text" name="recipe[title]" value="">
-    Description: <input type="textarea" name="recipe[description]" value="">
-    <br>
+  Title: <input type="text" name="recipe[title]" value="">
+  Description: <input type="textarea" name="recipe[description]" value="">
+  <br>
 
-  <% (0..4).each do |i| %>
-    <select name="recipe[riu][<%= i %>][ingredient_id]">
-      <% Ingredient.all.each do |ingredient| %>
-        <option value="<%= ingredient.id %>"><%= ingredient.name %></option>
-      <% end %>
-    </select>
+  <div id="add_ingredients">
+    <div id="ingredient-0">
+      <select name="recipe[riu][0][ingredient_id]">
+        <% Ingredient.all.each do |ingredient| %>
+          <option value="<%= ingredient.id %>"><%= ingredient.name %></option>
+        <% end %>
+      </select>
 
-    <input type="number" name="recipe[riu][<%= i %>][amount]" value="">
-   
-    <select name="recipe[riu][<%= i %>][unit_id]">
-      <% Unit.all.each do |unit| %>
-        <option value="<%= unit.id %>"><%= unit.unit %></option>
-      <% end %>
-    </select>
+      <input type="number" name="recipe[riu][0][amount]" value="">
+     
+      <select name="recipe[riu][0][unit_id]">
+        <% Unit.all.each do |unit| %>
+          <option value="<%= unit.id %>"><%= unit.unit %></option>
+        <% end %>
+      </select>
 
-    <br>
+      <button class="delete_this_ingredient">x</button>
+      <br>
+    </div>
 
-  <% end %>
+  </div>
+  <button id="add_more_ingredients">+</button>
 
   <input type="submit" value="Submit">
+
 </form>
+
+<script>
+
+  $("#add_more_ingredients").click(function(e){
+    e.preventDefault();
+
+    var numIngredients = $("#add_ingredients > div").length;
+
+    $("#add_ingredients").append(
+      '<div id="ingredient-'+numIngredients+'">'+      
+        '<select name="recipe[riu]['+numIngredients+'][ingredient_id]">'+
+          '<% Ingredient.all.each do |ingredient| %>'+
+            '<option value="<%= ingredient.id %>"><%= ingredient.name %></option>'+
+          '<% end %>'+
+        '</select>'+
+
+        '<input type="number" name="recipe[riu]['+numIngredients+'][amount]" value="">'+
+       
+        '<select name="recipe[riu]['+numIngredients+'][unit_id]">'+
+          '<% Unit.all.each do |unit| %>'+
+            '<option value="<%= unit.id %>"><%= unit.unit %></option>'+
+          '<% end %>'+
+        '</select>'+
+
+        '<button class="delete_this_ingredient">x</button>'+
+        '<br>'+
+      '</div>'
+    );
+  });
+
+  $("#add_ingredients").on('click', '.delete_this_ingredient', function(e){
+    e.preventDefault();
+
+    this.parentElement.remove();
+  });
+</script>
