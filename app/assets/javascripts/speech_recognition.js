@@ -84,10 +84,11 @@ messyChef.speechRecognition = {
                
 
                 if (r.indexOf("next") !=-1) { 
-                    $('.flex-next').click;
+                    console.log("before the click");
+                    $('.flex-next').click();
 
                 } else if (r.indexOf("back") !=-1 ){
-                    $('.flex-prev').click;
+                    $('.flex-prev').click();
                 } else {
                     alert("messychef did not understand command, sorry!");
                 }
