@@ -1,18 +1,38 @@
-<div>
-  <%= @recipe.title %><br>
-  <%= @recipe.description %><br>
-  <%= User.find(@recipe.creator_id).first_name + User.find(@recipe.creator_id).last_name if @recipe.creator_id %>
+<div class="row">
+  <div class="col-md-8">
+    <div class="blog-post">
+      <div class="entry">
+        <h3><%= @recipe.title %></h3>
+        <hr>
+        <p><%= @recipe.description %></p>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
 </div>
 
+<div class="row">
+  <div class="col-md-3 col-sm-6">
+    <div class="recipe-item">
+      <h5>Ingredients:</h5>
+      <ul class="list-unstyled">
+        <% @recipe.recipe_ingredient_units.each do |riu| %>
+          <li>
+            <%= riu.amount %> <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) if riu.unit_id %> <%= Ingredient.find(riu.ingredient_id).name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+  
+  <%= User.find(@recipe.creator_id).first_name + User.find(@recipe.creator_id).last_name if @recipe.creator_id %>
+
+
 <div>
-  <% @recipe.recipe_ingredient_units.each do |riu| %>
-    <%= riu.amount %> 
-    <% if riu.unit_id %>
-        <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) %>
-    <% end %>
-    <%= Ingredient.find(riu.ingredient_id).name %>
-    <br>
-  <% end %>
+  
 </div>
 
 <br>
