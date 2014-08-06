@@ -1,6 +1,8 @@
 <script type="text/javascript" charset="utf-8">
     $(window).load(function() {
-      $('.flexslider').flexslider();
+      $('.flexslider').flexslider({
+        slideshow: false
+      });
     });
 </script>
 
@@ -10,7 +12,7 @@
 
       <div class="row">
 
-        <h4><%= @recipe.title %></h4> 
+        <h3><%= @recipe.title %></h3> 
 
         <div class="row col-md-8">
 
