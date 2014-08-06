@@ -1,0 +1,27 @@
+$(document).ready(function(){
+
+  addDirection();
+
+  $("#add_more_directions").click(function(e){
+    e.preventDefault();
+
+    addDirection();
+  });
+
+  $("#add_directions").on("click", ".delete_this_direction", function(e) {
+    e.preventDefault();
+
+    this.parentElement.remove();
+  });
+});
+
+function addDirection() {
+  var numDirections = $("#add_directions > div").length;
+  
+  $("#add_directions").append(
+    '<div id="direction-'+numDirections+'">'+
+      '<button class="delete_this_direction">x</button>'+
+      '<input type="text" name="recipe[directions]['+numDirections+'][description]" value="">'+
+    '</div>'
+    );
+}

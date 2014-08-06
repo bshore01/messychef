@@ -26,13 +26,21 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
-    params[:recipe][:riu].each do |index, hash|
+    @recipe = Recipe.new(
+      :title => recipe_params[:title],
+      :description => recipe_params[:description],
+    )
+
+    recipe_params[:recipe_ingredient_units].each do |index, hash|
       @recipe.recipe_ingredient_units.build(hash)
     end 
+    
+    recipe_params[:directions].each do |index, hash|
+      @recipe.directions.build(:sequence => index, :description => hash[:description])
+    end
 
     respond_to do |format|
-      if @recipe.save
+      if @recipe.save 
         format.html { redirect_to recipes_path, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe }
       else
@@ -74,6 +82,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :description)
+      params.require(:recipe).permit(:title, :description, :recipe_ingredient_units => [:amount, :ingredient_id, :unit_id], :directions => [:description] )
     end
 end
