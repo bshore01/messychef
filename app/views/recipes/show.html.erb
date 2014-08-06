@@ -1,12 +1,26 @@
-<script type="text/javascript">//messyChef.init();</script>
 
 <script type="text/javascript" charset="utf-8">
     $(window).load(function() {
+
+       //messyChef.init();
+
       $('.flexslider').flexslider({
         slideshow: false
       });
     });
-</script>
+
+window.onbeforeunload = function (e) {
+  var message = "Your confirmation message goes here.",
+  e = e || window.event;
+  // For IE and Firefox
+  if (e) {
+    e.returnValue = message;
+  }
+
+  // For Safari
+  return message;
+};
+
 <div id="interim">Start</div>
 <div class="inner-page padd">
   <div class="recipe">
