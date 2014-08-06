@@ -76,9 +76,12 @@
         </ul>
       </div>
 
+      <div class="row">
+        <%= link_to '<< Back', recipes_path, class: "btn btn-danger pull-left" %>
+        &nbsp;&nbsp;
+        <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-danger" %>
+      </div>
+
     </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
