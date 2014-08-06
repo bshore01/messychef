@@ -1,5 +1,15 @@
-<p>
-<%= link_to recipe.title, recipe_path(recipe) %><br>
-<%= recipe.description %><br>
-<%= User.find(recipe.creator_id).first_name + User.find(recipe.creator_id).last_name if recipe.creator_id%>
-</p>
+<div class="col-md-6 col-sm-6">
+  <div class="pricing-item">
+    <a href="#">
+      <%= image_tag "fruit2.png", class: "img-responsive img-thumbnail", style: "max-width: 250px; float: left;" %>
+    </a>
+    <div class="pricing-item-details">
+      <h3><%= link_to recipe.title, recipe_path(recipe) %></h3>
+      <p>
+        <%= recipe.description.first(140) %>
+        <%= "..." if recipe.description.length > 140 %>
+      </p>
+      <div class="clearfix"></div>
+    </div>
+  </div>      
+</div>
