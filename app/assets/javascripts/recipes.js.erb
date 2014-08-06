@@ -21,15 +21,15 @@ function addIngredient(){
   $("#add_ingredients").append(
     '<div id="ingredient-'+numIngredients+'">'+
       '<button class="delete_this_ingredient">x</button>'+      
-      '<select name="recipe[riu]['+numIngredients+'][ingredient_id]">'+
+      '<select name="recipe[recipe_ingredient_units]['+numIngredients+'][ingredient_id]">'+
         '<% Ingredient.all.each do |ingredient| %>'+
           '<option value="<%= ingredient.id %>"><%= ingredient.name %></option>'+
         '<% end %>'+
       '</select>'+
 
-      '<input type="number" name="recipe[riu]['+numIngredients+'][amount]" value="">'+
+      '<input type="number" name="recipe[recipe_ingredient_units]['+numIngredients+'][amount]" value="">'+
      
-      '<select name="recipe[riu]['+numIngredients+'][unit_id]">'+
+      '<select name="recipe[recipe_ingredient_units]['+numIngredients+'][unit_id]">'+
         '<% Unit.all.each do |unit| %>'+
           '<option value="<%= unit.id %>"><%= unit.unit %></option>'+
         '<% end %>'+
