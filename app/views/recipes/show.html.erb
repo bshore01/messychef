@@ -1,7 +1,14 @@
+<script type="text/javascript" charset="utf-8">
+    $(window).load(function() {
+      $('.flexslider').flexslider();
+    });
+</script>
+
 <div class="inner-page padd">
   <div class="recipe">
     <div class="container">
-      <div >
+
+      <div class="row">
 
         <h4><%= @recipe.title %></h4> 
 
@@ -34,26 +41,42 @@
             </div>
           </div>
 
-        </div>
-        <br>
+          <hr>
 
-        
+          <div class="row">
+            <div class="col-md-8">
+              <div class="recipe-item">
+                <h5>Directions:</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <p>Placeholder for user section.</p>
+        </div>
 
       </div>
+
+      <div class="flexslider">
+        <ul class="slides">
+          <% @recipe.directions.sort_by { |d| d.sequence }.each do |direction| %>
+            <li>
+              <div>
+                <div style="padding: 10px 45px 10px 45px;">
+                  <%= direction.sequence %>.
+                  <%= direction.description.capitalize[0] + direction.description.slice(1..-1) %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
-
-<br>
-
-<div>
-  <% @recipe.directions.sort_by { |d| d.sequence }.each do |direction| %>
-    <%= direction.sequence %>.
-    <%= direction.description.capitalize[0] + direction.description.slice(1..-1)  %><br> 
-  <% end %>
-</div>
-
-<br>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
