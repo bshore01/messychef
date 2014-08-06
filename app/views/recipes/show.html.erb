@@ -1,12 +1,27 @@
-<script type="text/javascript">//messyChef.init();</script>
 
 <script type="text/javascript" charset="utf-8">
-    $(window).load(function() {
-      $('.flexslider').flexslider({
-        slideshow: false
-      });
+  $(window).load(function() {
+
+     //messyChef.init();
+
+    $('.flexslider').flexslider({
+      slideshow: false
     });
+  });
+
+  window.onbeforeunload = function (e) {
+    var message = "Your confirmation message goes here.",
+    e = e || window.event;
+    // For IE and Firefox
+    if (e) {
+      e.returnValue = message;
+    }
+
+    // For Safari
+    return message;
+  };
 </script>
+
 <div id="interim">Start</div>
 <div class="inner-page padd">
   <div class="recipe">
@@ -78,9 +93,12 @@
         </ul>
       </div>
 
+      <div class="row">
+        <%= link_to '<< Back', recipes_path, class: "btn btn-danger pull-left" %>
+        &nbsp;&nbsp;
+        <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-danger" %>
+      </div>
+
     </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>

@@ -1,18 +1,24 @@
+var recognition;
+
 messyChef.speechRecognition = {
     final_transcript: '',
     lastRecognition: 0,
     timeBetweenCommands: 3000,
+  
+     stop: function() {
+        recognition.stop();
+     },
 
     init: function() {
 
         if (!('webkitSpeechRecognition' in window)) {
             this.notSupportedMessage();
         } else {
-            var recognition = new webkitSpeechRecognition();
+            
+            recognition = new webkitSpeechRecognition();   
             recognition.continuous = true;
             recognition.interimResults = true;
             recognition.lang = 'en-US';
-
 
             //is called several times if while speeking... builds a string 
             recognition.onresult = function(event) {
