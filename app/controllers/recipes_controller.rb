@@ -22,6 +22,25 @@ class RecipesController < ApplicationController
   def edit
   end
 
+  def command_detect
+    message = params[:cmd]
+    wit = Wit::Client.new ENV["WIT_AI_TOKEN"]
+    results = wit.message(message)
+    @intent = results["outcomes"][0]["intent"]
+    @entity = results["outcomes"][0]["entities"]
+    @confidence = results["outcomes"][0]["confidence"]
+    
+    if @confidence >= 0.50 && @intent == "directions" && @entity.keys.first == "next" 
+        render json: "next"
+
+    elsif @confidence >= 0.50 && @intent == "directions" && @entity.keys.first == "back"
+        render json: "back"
+      
+    else
+        render json: ""
+    end
+  end
+
   # POST /recipes
   # POST /recipes.json
   def create

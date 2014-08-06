@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   root :to => "welcome#hello"
 
+  post 'recipes/command_detect', to: "recipes#command_detect"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
