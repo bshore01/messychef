@@ -1,25 +1,26 @@
 
 <script type="text/javascript" charset="utf-8">
-    $(window).load(function() {
+  $(window).load(function() {
 
-       //messyChef.init();
+     //messyChef.init();
 
-      $('.flexslider').flexslider({
-        slideshow: false
-      });
+    $('.flexslider').flexslider({
+      slideshow: false
     });
+  });
 
-window.onbeforeunload = function (e) {
-  var message = "Your confirmation message goes here.",
-  e = e || window.event;
-  // For IE and Firefox
-  if (e) {
-    e.returnValue = message;
-  }
+  window.onbeforeunload = function (e) {
+    var message = "Your confirmation message goes here.",
+    e = e || window.event;
+    // For IE and Firefox
+    if (e) {
+      e.returnValue = message;
+    }
 
-  // For Safari
-  return message;
-};
+    // For Safari
+    return message;
+  };
+</script>
 
 <div id="interim">Start</div>
 <div class="inner-page padd">
