@@ -1,38 +1,47 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="blog-post">
-      <div class="entry">
-        <h3><%= @recipe.title %></h3>
-        <hr>
-        <p><%= @recipe.description %></p>
-        <div class="clearfix">
+<div class="inner-page padd">
+  <div class="recipe">
+    <div class="container">
+      <div >
+
+        <h4><%= @recipe.title %></h4> 
+
+        <div class="row col-md-8">
+
+          <div class="row">
+            <div class="col-md-8">
+              <p><%= @recipe.description %></p>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-md-4 col-sm-6">
+              <div class="recipe-item">
+                <h5>Ingredients:</h5>
+                <ul class="list-unstyled">
+                  <% @recipe.recipe_ingredient_units.each do |riu| %>
+                    <li>
+                      <i class="fa fa-check">
+                      </i>
+                      <%= riu.amount %> <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) if riu.unit_id %> <%= Ingredient.find(riu.ingredient_id).name %>
+                      <div class="clearfix"></div>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
+        <br>
+
+        
+
       </div>
     </div>
   </div>
-  <br>
-</div>
-
-<div class="row">
-  <div class="col-md-3 col-sm-6">
-    <div class="recipe-item">
-      <h5>Ingredients:</h5>
-      <ul class="list-unstyled">
-        <% @recipe.recipe_ingredient_units.each do |riu| %>
-          <li>
-            <%= riu.amount %> <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) if riu.unit_id %> <%= Ingredient.find(riu.ingredient_id).name %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-  
-  <%= User.find(@recipe.creator_id).first_name + User.find(@recipe.creator_id).last_name if @recipe.creator_id %>
-
-
-<div>
-  
 </div>
 
 <br>
