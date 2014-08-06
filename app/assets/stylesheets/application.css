@@ -22,3 +22,9 @@
  *= require prettyPhoto
  
  */
+
+ 
+
+.wrapper {
+  background-image: url(/assets/crossword.png);
+}
