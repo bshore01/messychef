@@ -81,14 +81,13 @@ messyChef.speechRecognition = {
                 console.log(response);
                 var response = response;
                 var r = response.responseText;
-                var bookmarks = $(".bookmark");
-                var position = 0; //Start Position
+               
 
                 if (r.indexOf("next") !=-1) { 
-                    $('body').scrollTo(bookmarks[position += 1]);
+                    $('.flex-next').click;
 
-                } else if (r.indexOf("back") !=-1 && position > 0 ){
-                    $('body').scrollTo(bookmarks[position -= 1]);
+                } else if (r.indexOf("back") !=-1 ){
+                    $('.flex-prev').click;
                 } else {
                     alert("messychef did not understand command, sorry!");
                 }
