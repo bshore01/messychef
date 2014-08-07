@@ -20,13 +20,13 @@
  *= require font-awesome.min
  *= require flexslider
  *= require prettyPhoto
- 
+ *= require select2
+ *= require select2-bootstrap
  */
-
- 
 
 .wrapper {
   background-image: url(/assets/crossword.png);
+
 }
 
 
@@ -41,4 +41,5 @@
     height:1200px;
 
 }
+
 
