@@ -48,5 +48,7 @@ gem 'figaro'
 
 gem "rails_12factor"
 
+gem 'font-awesome-rails'
+
 #autocomplete
 gem 'select2-rails'
