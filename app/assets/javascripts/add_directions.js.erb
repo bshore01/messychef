@@ -1,10 +1,13 @@
+var directionId = 0;
+
 $(document).ready(function(){
 
-  addDirection();
+  addDirection(directionId);
 
   $("#add_more_directions").click(function(e){
     e.preventDefault();
-    
+
+    directionId++;    
     addDirection();
   });
 
@@ -16,12 +19,10 @@ $(document).ready(function(){
 });
 
 function addDirection() {
-  var numDirections = $("#add_directions > div").length;
-  
   $("#add_directions").append(
-    '<div id="direction-'+numDirections+'">'+
+    '<div id="direction-'+directionId+'">'+
       '<button class="delete_this_direction">x</button>'+
-      '<input type="text" name="recipe[directions]['+numDirections+'][description]" value="">'+
+      '<input type="text" name="recipe[directions]['+directionId+'][description]" value="">'+
     '</div>'
-    );
+  );
 }
