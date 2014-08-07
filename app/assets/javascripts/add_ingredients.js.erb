@@ -22,20 +22,28 @@ function addIngredient(){
   $("#add_ingredients").append(
     '<div id="ingredient-'+numIngredients+'">'+
       '<button class="delete_this_ingredient">x</button>'+      
-      '<select class="ingredient_name" name="recipe[recipe_ingredient_units]['+numIngredients+'][ingredient_id]">'+
+      ingredientList(numIngredients)+
+      '<input type="number" name="recipe[recipe_ingredient_units]['+numIngredients+'][amount]" value="">'+
+      unitList(numIngredients)+
+    '</div>'
+  );
+}
+
+function ingredientList(numIngredients){
+  var ingredient_list = '<select class="ingredient_name" name="recipe[recipe_ingredient_units]['+numIngredients+'][ingredient_id]">'+
         '<% Ingredient.all.each do |ingredient| %>'+
           '<option value="<%= ingredient.id %>"><%= ingredient.name.capitalize %></option>'+
         '<% end %>'+
         '<option value="<%= (Ingredient.all.length.to_i + 1) %>">New ingredient</option>'+
-      '</select>'+
+      '</select>';
+  return ingredient_list;
+}
 
-      '<input type="number" name="recipe[recipe_ingredient_units]['+numIngredients+'][amount]" value="">'+
-     
-      '<select  class="unit_name" name="recipe[recipe_ingredient_units]['+numIngredients+'][unit_id]">'+
+function unitList(numIngredients){
+  var unit_list = '<select  class="unit_name" name="recipe[recipe_ingredient_units]['+numIngredients+'][unit_id]">'+
         '<% Unit.all.each do |unit| %>'+
           '<option value="<%= unit.id %>"><%= unit.unit.capitalize %></option>'+
         '<% end %>'+
-      '</select>'+
-    '</div>'
-  );
+      '</select>';
+  return unit_list;
 }
