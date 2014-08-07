@@ -4,8 +4,20 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    # raise params.inspect
+    search_term = params[:q].downcase 
+    @recipes_all = Recipe.all
+    # binding.pry
+
+    if search_term == ""
+      @recipes = @recipes_all
+    else
+      @recipes = Recipe.where("lower(description) like '%#{search_term}%' or lower(title) like '%#{search_term}%'")
+
+    end
+
   end
+
 
   # GET /recipes/1
   # GET /recipes/1.json

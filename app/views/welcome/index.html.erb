@@ -2,11 +2,13 @@
     
     <div id="searchbox">
       <h1 class="searchh1">Find a recipe</h1>
-      <form class="form" role="form" >
+      <form class="form" role="form" action = "/recipes" method = "GET">
         <div class="input-group">
-        <input type="text" class="form-control" id="landsearchform" placeholder="Search...">
+        <%= token_tag %>
+        <input type="text" class="form-control" placeholder="Search..." name = "q" id="landsearchform">
+       
         <span class="input-group-btn" id="landsearchform">
-         <button class="btn btn-default" type="button" id="landsearchform"><i class="searchbutton" ></i></button>
+         <button class="btn btn-default" type="button"><i class="fa fa-search" id="landsearchform"></i></button>
         </span>
         </div>
       </form>
