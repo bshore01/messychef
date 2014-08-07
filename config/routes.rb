@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   get 'welcome/hello'
 
-  root :to => "welcome#hello"
+  #root :to => "welcome#hello"
+  root :to => "welcome#index"
 
   post 'recipes/command_detect', to: "recipes#command_detect"
 
