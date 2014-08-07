@@ -15,6 +15,8 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @ingredients_for_select = Ingredient.order("lower(name)")
+    @units_for_select = Unit.order("lower(unit)")
     # set creator_id to user
   end
 

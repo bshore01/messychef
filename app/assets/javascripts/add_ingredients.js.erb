@@ -1,9 +1,8 @@
-
 $(document).ready(function(){
 
-  addIngredient();
+  $("#add_ingredients").children("select").select2();
 
-  $("#add_more_ingredients").click(function(e){
+  $("#add_more_ingredients").click(function (e) {
     e.preventDefault();
 
     addIngredient();
@@ -19,31 +18,25 @@ $(document).ready(function(){
 function addIngredient(){
   var numIngredients = $("#add_ingredients > div").length;
 
-  $("#add_ingredients").append(
-    '<div id="ingredient-'+numIngredients+'">'+
-      '<button class="delete_this_ingredient">x</button>'+      
-      ingredientList(numIngredients)+
-      '<input type="number" name="recipe[recipe_ingredient_units]['+numIngredients+'][amount]" value="">'+
-      unitList(numIngredients)+
-    '</div>'
-  );
-}
+  $("#add_ingredients")
+      .children("select")
 
-function ingredientList(numIngredients){
-  var ingredient_list = '<select class="ingredient_name" name="recipe[recipe_ingredient_units]['+numIngredients+'][ingredient_id]">'+
-        '<% Ingredient.all.each do |ingredient| %>'+
-          '<option value="<%= ingredient.id %>"><%= ingredient.name.capitalize %></option>'+
-        '<% end %>'+
-        '<option value="<%= (Ingredient.all.length.to_i + 1) %>">New ingredient</option>'+
-      '</select>';
-  return ingredient_list;
-}
+      // call destroy to revert the changes made by Select2
+      .select2("destroy").end()
 
-function unitList(numIngredients){
-  var unit_list = '<select  class="unit_name" name="recipe[recipe_ingredient_units]['+numIngredients+'][unit_id]">'+
-        '<% Unit.all.each do |unit| %>'+
-          '<option value="<%= unit.id %>"><%= unit.unit.capitalize %></option>'+
-        '<% end %>'+
-      '</select>';
-  return unit_list;
+      // append another ingredients select 
+      .append(
+        $("#add_ingredients").children("button").first().clone()
+      ).append(
+        $("#add_ingredients").children("select").first().clone()
+      ).append(
+        $("#add_ingredients").children("input").first().clone().val("")
+      ).append(
+        $("#add_ingredients").children("select").eq(1).clone()
+      ).append(
+        $("#add_ingredients").children("br").first().clone()
+      );
+
+  // enable Select2 on the select elements
+  $("#add_ingredients").children("select").select2();
 }

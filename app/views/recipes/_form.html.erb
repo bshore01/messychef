@@ -1,31 +1,46 @@
 <form action="/recipes" method="post" id="recipe_form">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     
-  Title: <input type="text" name="recipe[title]" value="">
-  Description: <input type="textarea" name="recipe[description]" value="">
+  Title: <input type="text" name="recipe[title]" value=""><br>
+  Description: <textarea name="recipe[description]" rows=7 cols=50 value=""></textarea>
+
+  <br>
+  <br>
   <br>
 
-  <br><br>
-
   <div id="add_ingredients">
-    Add ingredients:
-  </div>
-  <button id="add_more_ingredients">+ Add ingredient</button>
+    <div class="add_ingredient">
 
-  <br><br>
-  
-  <div id="create_ingredient">
-    Create ingredient:
-    <input type="text" name="ingredient" value="">
-    <button id="add_ingredient_to_db">Create ingredient</button>
+      <button class="delete_this_ingredient">x</button>
+
+      <select id="select_ingredient" data-placeholder="- Add an ingredient -">
+        <option></option>
+        <%= @ingredients_for_select.each do |i| %>
+          <option value="<%= i.id %>"><%= i.name %></option>
+        <% end %>
+      </select>
+
+      <input type="number">
+
+      <select id="select_unit" data-placeholder="- Add unit of measurement -">
+        <option></option>
+        <%= @units_for_select.each do |u| %>
+          <option value="<%= u.id %>"><%= u.unit %></option>
+        <% end %>
+      </select>
+
+    </div>
   </div>
 
-  <br><br>
+  <button id="add_more_ingredients">(+) Add ingredient</button>
+
+  <br>
+  <br>
   
   <div id="add_directions">
     Add directions:  
   </div>
-  <button id="add_more_directions">+Add direction</button>
+  <button id="add_more_directions">(+) Add direction</button>
 
   <br><br>
   
