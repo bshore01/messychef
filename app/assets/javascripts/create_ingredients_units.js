@@ -1,8 +1,9 @@
 $(document).ready(function(){
   
-  $("#create_ingredient").hide();
+  create_ingredient_hide();  
 
   $("#add_ingredients").on("change", ".ingredient_name", function(){
+    $("#notice-ingredient-added").remove();
     if ($(this).children("option").filter(":selected").text() == "New ingredient") {
       $("#create_ingredient").show();
     }
@@ -15,10 +16,15 @@ $(document).ready(function(){
     e.preventDefault();
     var name = $("#create_ingredient").children("input").val();
     var url ="/ingredients";
-    $.post(url, {data: {name: name}}, function(newly_created_ingredient){
-      // console.log(newly_created_ingredient);
+    $.post(url, {data: {name: name}}, function(response){
+      $("#add_ingredients").append('<p id="notice-ingredient-added">Succesfully added ingredient</p>')
+      create_ingredient_hide();
+      ingredientListValues();
     });
   });
 });
 
+function create_ingredient_hide() {
+  $("#create_ingredient").hide();
+}
 

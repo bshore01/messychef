@@ -28,10 +28,15 @@ class IngredientsController < ApplicationController
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(name: params[:data][:name])
-    if @ingredient.save
-      render json: @ingredient
-    else
-      "error"
+    
+    respond_to do |format|
+      if @ingredient.save
+        # format.html { render action: "/recipes/new" }
+        format.json { render json: @ingredient, status: :created, location: @ingredient }
+      else
+        # format.html { render action: "/recipes/new" }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
