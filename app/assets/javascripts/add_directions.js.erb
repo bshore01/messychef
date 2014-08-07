@@ -1,22 +1,24 @@
 var directionId = 0;
 
-$(document).ready(function(){
 
+$(document).ready(function(){
+  // make the first direction
   addDirection(directionId);
 
+  // add another direction
   $("#add_more_directions").click(function(e){
     e.preventDefault();
-
     directionId++;    
     addDirection();
   });
 
+  // delete a direction
   $("#add_directions").on("click", ".delete_this_direction", function(e) {
     e.preventDefault();
-
     this.parentElement.remove();
   });
 });
+
 
 function addDirection() {
   $("#add_directions").append(

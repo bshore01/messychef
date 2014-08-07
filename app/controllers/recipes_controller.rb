@@ -57,16 +57,22 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
+    
+    # setup new instance
     @recipe = Recipe.new(
       :title => recipe_params[:title],
       :description => recipe_params[:description],
     )
 
     recipe_params[:recipe_ingredient_units].each do |riuId, hash|
-      @recipe.recipe_ingredient_units.build(hash)
+      # find or create ingredients & units, associate to recipe
+      @ingredient = Ingredient.find_or_create_by(name: hash[:ingredient].downcase.gsub(/\s+/, " "))
+      @unit = Unit.find_or_create_by(unit: hash[:unit].downcase.gsub(/\s+/, " "))
+      @recipe.recipe_ingredient_units.build(ingredient_id: @ingredient.id, unit_id: @unit.id, amount: hash[:amount])
     end 
     
     recipe_params[:directions].each.with_index do |hash, index|
+      # create directions, associate to recipe
       @recipe.directions.build(:sequence => index+1, :description => hash[1][:description])
     end
 
@@ -113,6 +119,6 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :recipe_ingredient_units => [:amount, :ingredient_id, :unit_id], :directions => [:description] )
+      params.require(:recipe).permit(:title, :description, :recipe_ingredient_units => [:amount, :ingredient, :unit], :directions => [:description] )
     end
 end
