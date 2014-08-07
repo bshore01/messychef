@@ -15,7 +15,6 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
-    
     # set creator_id to user
   end
 
@@ -56,7 +55,7 @@ class RecipesController < ApplicationController
     end 
     
     recipe_params[:directions].each do |index, hash|
-      @recipe.directions.build(:sequence => index, :description => hash[:description])
+      @recipe.directions.build(:sequence => index.to_i+1, :description => hash[:description])
     end
 
     respond_to do |format|

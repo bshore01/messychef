@@ -27,6 +27,7 @@ puts "Creating Ingredients"
 
 puts "Creating Units"
 
+@no_unit = Unit.create(unit: "no unit")
 @pound = Unit.create(unit: "pound")
 @ounce = Unit.create(unit: "ounce")
 @cup = Unit.create(unit: "cup")
@@ -35,7 +36,6 @@ puts "Creating Units"
 @kilogram = Unit.create(unit: "kilogram")
 @gram = Unit.create(unit: "gram")
 @liter = Unit.create(unit: "liter")
-
 
 puts "Creating Recipes..."
 
