@@ -9,27 +9,6 @@
   <br>
 
   <div id="add_ingredients">
-    <div class="add_ingredient">
-
-      <button class="delete_this_ingredient">x</button>
-
-      <select id="select_ingredient" data-placeholder="- Add an ingredient -">
-        <option></option>
-        <%= @ingredients_for_select.each do |i| %>
-          <option value="<%= i.id %>"><%= i.name %></option>
-        <% end %>
-      </select>
-
-      <input type="number">
-
-      <select id="select_unit" data-placeholder="- Add unit of measurement -">
-        <option></option>
-        <%= @units_for_select.each do |u| %>
-          <option value="<%= u.id %>"><%= u.unit %></option>
-        <% end %>
-      </select>
-
-    </div>
   </div>
 
   <button id="add_more_ingredients">(+) Add ingredient</button>
