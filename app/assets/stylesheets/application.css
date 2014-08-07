@@ -32,13 +32,32 @@
 
 #landing-page-container{
   float:left;
-    width:100%;
+    width:1733;
     margin:0;
     padding:0;
     text-align: center;
 
-    background: url(http://i.imgur.com/k8uOl1Q.jpg);
-    height:1200px;
+    background-image: url(/assets/images/landingbackground2.jpg);
+    height:1155px;
+
+}
+
+.searchh1 {
+    font-size: 70px;
+    color: white;
+}
+
+#landsearchform {
+    font-size: 2.0em;
+}
+
+#searchbox {
+    float: left;
+    width: 30%;
+    min-width: 350px;
+    position: relative;
+    left: 33.3%;
+    padding-top: 200px;
 
 }
 
