@@ -1,6 +1,9 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
+  def autocomplete_ingredient_name
+  end 
+
   # GET /ingredients
   # GET /ingredients.json
   def index

@@ -17,6 +17,7 @@
  *= require settings
  *= require style
  *= require ie-style
+ *= require jquery-ui
  *= require font-awesome.min
  *= require flexslider
  *= require prettyPhoto

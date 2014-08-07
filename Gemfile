@@ -45,3 +45,6 @@ gem 'multi_json'
 gem 'jquery-scrollto-rails', '~> 1.4.3'
 
 gem 'figaro'
+
+#autocomplete
+gem 'jquery-ui-rails'

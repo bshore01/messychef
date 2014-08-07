@@ -52,6 +52,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-scrollto-rails (1.4.3)
       railties (> 3.1, < 5.0)
+    jquery-ui-rails (4.0.4)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -136,6 +139,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-scrollto-rails (~> 1.4.3)
+  jquery-ui-rails
   multi_json
   pg
   pry-rails
