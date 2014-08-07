@@ -50,12 +50,12 @@ class RecipesController < ApplicationController
       :description => recipe_params[:description],
     )
 
-    recipe_params[:recipe_ingredient_units].each do |index, hash|
+    recipe_params[:recipe_ingredient_units].each do |riuId, hash|
       @recipe.recipe_ingredient_units.build(hash)
     end 
     
-    recipe_params[:directions].each do |index, hash|
-      @recipe.directions.build(:sequence => index.to_i+1, :description => hash[:description])
+    recipe_params[:directions].each.with_index do |hash, index|
+      @recipe.directions.build(:sequence => index+1, :description => hash[1][:description])
     end
 
     respond_to do |format|

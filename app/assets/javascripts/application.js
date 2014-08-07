@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require select2
 //= require jquery.scrollTo
 //= require bootstrap
 //= require jquery.flexslider-min

@@ -47,3 +47,6 @@ gem 'jquery-scrollto-rails', '~> 1.4.3'
 gem 'figaro'
 
 gem "rails_12factor"
+
+#autocomplete
+gem 'select2-rails'
