@@ -44,7 +44,6 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    raise params.inspect
     @recipe = Recipe.new(
       :title => recipe_params[:title],
       :description => recipe_params[:description],
