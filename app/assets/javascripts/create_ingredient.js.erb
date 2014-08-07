@@ -1,0 +1,39 @@
+$(document).ready(function(){
+  
+  // hide the create new ingredient form on document load
+  create_ingredient_hide();  
+
+  $("#add_ingredients").on("change", "#select_ingredient", function(){
+    // remove notice, if any, that ingredient was successfully added
+    $("#notice-ingredient-added").remove();
+
+    // show create_ingredient form depending on the current value of the drop down
+    if ($(this).children("option").filter(":selected").text() == "Add New Ingredient") {
+      $("#create_ingredient").show();
+    }
+    if ($(this).children("option").filter(":selected").text() != "Add New Ingredient") {
+      $("#create_ingredient").hide();
+    }
+  });
+
+  $("#create_new_ingredient").click(function(e){
+    e.preventDefault();
+
+    var name = $("#create_ingredient").children("input").val();
+    var url ="/ingredients";
+
+    $.post(
+      url, 
+      {data: {name: name}}, 
+      function(response){
+        $("#create_ingredient_holder").append('<p id="notice-ingredient-added">Successfully added ingredient!</p>');
+        $("#create_ingredient").children("input").val("");
+        create_ingredient_hide();
+        // ingredientListValues();
+    });
+  });
+});
+
+function create_ingredient_hide() {
+  $("#create_ingredient").hide();
+}

@@ -21,6 +21,7 @@ $(document).ready(function(){
 
     this.parentElement.remove();
   });
+
 });
 
 function addIngredient(riuId){
@@ -38,6 +39,7 @@ function addIngredient(riuId){
 
         '<select id="select_ingredient" data-placeholder="- Add an ingredient -" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient_id]">'+
           '<option></option>'+
+          '<option>Add New Ingredient</option>'+
           '<% Ingredient.order("lower(name)").each do |i| %>'+
             '<option value="<%= i.id %>"><%= i.name.downcase %></option>'+
           '<% end %>'+
