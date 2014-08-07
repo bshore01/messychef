@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
     @entity = results["outcomes"][0]["entities"]
     @confidence = results["outcomes"][0]["confidence"]
     
+    
     if @confidence >= 0.50 && @intent == "directions" && @entity.keys.first == "next" 
         render json: "next"
 
