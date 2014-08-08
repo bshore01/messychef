@@ -66,25 +66,15 @@ class RecipesController < ApplicationController
 
   # POST /recipes
   # POST /recipes.json
-  def create
-    
+  def create 
+    # raise params.inspect
     # setup new instance
     @recipe = Recipe.new(
       :title => recipe_params[:title],
       :description => recipe_params[:description],
     )
-
-    recipe_params[:recipe_ingredient_units].each do |riuId, hash|
-      # find or create ingredients & units, associate to recipe
-      @ingredient = Ingredient.find_or_create_by(name: hash[:ingredient].downcase.strip.gsub(/\s+/, " "))
-      @unit = Unit.find_or_create_by(unit: hash[:unit].downcase.strip.gsub(/\s+/, " "))
-      @recipe.recipe_ingredient_units.build(ingredient_id: @ingredient.id, unit_id: @unit.id, amount: hash[:amount])
-    end 
-    
-    recipe_params[:directions].each.with_index do |hash, index|
-      # create directions, associate to recipe
-      @recipe.directions.build(:sequence => index+1, :description => hash[1][:description])
-    end
+    @recipe.make_rius_from_params(recipe_params)
+    @recipe.make_directions_from_params(recipe_params)
 
     respond_to do |format|
       if @recipe.save 
@@ -100,8 +90,15 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
+    @recipe.title = recipe_params[:title]
+    @recipe.description = recipe_params[:description]
+    @recipe.recipe_ingredient_units.destroy_all
+    @recipe.make_rius_from_params(recipe_params)
+    @recipe.directions.destroy_all
+    @recipe.make_directions_from_params(recipe_params)
+
     respond_to do |format|
-      if @recipe.update(recipe_params)
+      if @recipe.save
         format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe }
       else
@@ -130,5 +127,5 @@ class RecipesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:title, :description, :recipe_ingredient_units => [:amount, :ingredient, :unit], :directions => [:description] )
-    end
+    end 
 end

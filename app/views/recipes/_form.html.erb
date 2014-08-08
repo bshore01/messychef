@@ -1,11 +1,14 @@
 <br><br>
 
 <form action="/recipes" method="post" id="recipe_form" role="form">
+
+  <input type="hidden" name="_method" value="PATCH">
+  
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
   <div class="row">
     <div class="col-md-4">
-      Title: <input type="text" name="recipe[title]" value="" class="form-control">
+      Title: <input type="text" name="recipe[title]" value="<%= @recipe.title if @recipe.title %>" class="form-control">
     </div>
   </div>
 
@@ -13,7 +16,7 @@
 
   <div class="row">
     <div class="col-md-6">
-      Description: <textarea name="recipe[description]" rows=7 cols=50 value="" class="form-control col-md-4"></textarea>
+      Description: <textarea name="recipe[description]" rows=7 cols=50 class="form-control col-md-4"><%= @recipe.description if @recipe.description %></textarea>
     </div>
   </div>
 
@@ -23,12 +26,22 @@
     <div class="form-group col-md-8">
       Add ingredients:
       <table id="add_ingredients" class="table table-bordered">
-       <tr >
+       <tr>
          <th></th>
          <th style="text-align:center;">Name</th>
          <th style="text-align:center;">Amount</th>
          <th style="text-align:center;">Unit of Measurement (optional)</th>
        </tr>
+       <% if @recipe.recipe_ingredient_units %>
+        <% @recipe.recipe_ingredient_units.each.with_index do |riu, i| %>
+          <tr class="edit-ingredients">
+            <td><button class="delete_this_ingredient btn btn-danger">x</button></td>
+            <td><input type="text" name="recipe[recipe_ingredient_units][<%= i %>][ingredient]" class="form-control" value="<%= riu.ingredient.name %>"></td>
+            <td><input type="number" name="recipe[recipe_ingredient_units][<%= i %>][amount]" class="form-control" value="<%= riu.amount %>"></td>
+            <td><input type="text" name="recipe[recipe_ingredient_units][<%= i %>][unit]" class="form-control" value="<%= riu.unit.unit %>"></td>
+          </tr>
+        <% end %>
+       <% end %>
       </table>    
       <button id="add_more_ingredients" class="btn btn-success">Add another ingredient</button>
     </div>
@@ -44,7 +57,16 @@
          <th></th>
          <th style="text-align:center;">Step #</th>
          <th style="text-align:center;">Details</th>
-       </tr> 
+       </tr>
+       <% if @recipe.directions %> 
+        <% @recipe.directions.each.with_index do |direction, i| %>
+          <tr class="edit-directions">
+            <td><button class="delete_this_direction btn btn-danger">x</button></td>
+            <td class="step_number" style="text-align:center;"></td>
+            <td><textarea name="recipe[directions][<%= i %>][description]" value="" class="form-control" style="display:inline-block;" rows=3 cols=50><%= direction.description %></textarea></td>
+          </tr>
+        <% end %>
+       <% end %>
       </table> 
       <button id="add_more_directions" class="btn btn-success">Add another direction</button>
     </div>
@@ -52,5 +74,5 @@
 
   <hr>
   
-  <input type="submit" value="Create recipe!" class="btn btn-danger">
+  <input type="submit" value="Submit" class="btn btn-danger">
 </form>
