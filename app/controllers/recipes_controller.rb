@@ -9,13 +9,22 @@ class RecipesController < ApplicationController
 
   def search
     @recipes_all = Recipe.all
+
     search_term = params[:q].downcase 
-      
-    if search_term == ""
+    multiple_search_terms = search_term.split(/,|\s/).reject { |i| i==""}
+    
+    @recipes = []
+
+    if search_term == ""         # if search query is blank
       @recipes = @recipes_all
-    else
-      @recipes = Recipe.where("lower(description) like '%#{search_term}%' or lower(title) like '%#{search_term}%'")
+    else                                  # if search query is not blank
+      multiple_search_terms.each do |search|
+       @recipes << Recipe.where("lower(description) like '%#{search}%' or lower(title) like '%#{search}%'")
+      end    
     end
+
+    @recipes = @recipes.flatten
+
     render "recipes/index"
   end
 
@@ -72,8 +81,8 @@ class RecipesController < ApplicationController
 
     recipe_params[:recipe_ingredient_units].each do |riuId, hash|
       # find or create ingredients & units, associate to recipe
-      @ingredient = Ingredient.find_or_create_by(name: hash[:ingredient].downcase.gsub(/\s+/, " "))
-      @unit = Unit.find_or_create_by(unit: hash[:unit].downcase.gsub(/\s+/, " "))
+      @ingredient = Ingredient.find_or_create_by(name: hash[:ingredient].downcase.strip.gsub(/\s+/, " "))
+      @unit = Unit.find_or_create_by(unit: hash[:unit].downcase.strip.gsub(/\s+/, " "))
       @recipe.recipe_ingredient_units.build(ingredient_id: @ingredient.id, unit_id: @unit.id, amount: hash[:amount])
     end 
     
