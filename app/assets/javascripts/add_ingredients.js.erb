@@ -1,9 +1,10 @@
-var riuId = 0;
-
-
 $(document).ready(function(){
-  // make the first ingredient
-  addIngredient(riuId);
+  riuId = $(".edit-ingredients").length-1;
+
+  // make the first ingredient, except if we're in the edit path
+  if($(".edit-ingredients").length === 0){
+    addIngredient(riuId);
+  }
 
   // add another ingredient
   $("#add_more_ingredients").click(function(e){
@@ -19,14 +20,14 @@ $(document).ready(function(){
   });
 });
 
-
+// add html for inputting new ingredient when the button is clicked
 function addIngredient(riuId){
   $("#add_ingredients").append(
     '<tr>'+
-      '<td><button class="delete_this_ingredient">x</button></td>'+
-      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient]"></td>'+
-      '<td><input type="number" name="recipe[recipe_ingredient_units]['+riuId+'][amount]"></td>'+
-      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][unit]"></td>'+
+      '<td><button class="delete_this_ingredient btn btn-danger">x</button></td>'+
+      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient]" class="form-control"></td>'+
+      '<td><input type="number" name="recipe[recipe_ingredient_units]['+riuId+'][amount]" class="form-control"></td>'+
+      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][unit]" class="form-control"></td>'+
     '</tr>'
   );
 }

@@ -87,6 +87,7 @@ messyChef.speechRecognition = {
                 console.log(response);
                 var response = response;
                 var r = response.responseText;
+
                
 
                 if (r.indexOf("next") !=-1) { 
@@ -95,6 +96,17 @@ messyChef.speechRecognition = {
 
                 } else if (r.indexOf("back") !=-1 ){
                     $('.flex-prev').click();
+                } else if (r.indexOf("search") !=1) {
+                    
+                    var valPos = r.indexOf("value") + 9;
+                    var a = r.substr(valPos);
+                    var b = a.length - 3;
+                    var searchTerm = a.substr(0, b);
+                    debugger
+                    $('.form-control').val(searchTerm);
+                    $('button').click();
+                    console.log("this is searching..");
+                    
                 } else {
                     alert("messychef did not understand command, sorry!");
                 }

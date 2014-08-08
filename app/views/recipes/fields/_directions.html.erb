@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="form-group col-md-8">
+
+    Add directions: 
+    <table id="add_directions" class="table table-bordered">
+
+     <tr >
+       <th></th>
+       <th style="text-align:center;">Step #</th>
+       <th style="text-align:center;">Details</th>
+     </tr>
+
+     <% if recipe.directions %> 
+      <% recipe.directions.each.with_index do |direction, i| %>
+        <tr class="edit-directions">
+          <td><button class="delete_this_direction btn btn-danger">x</button></td>
+          <td class="step_number" style="text-align:center;"></td>
+          <td><textarea name="recipe[directions][<%= i %>][description]" value="" class="form-control" style="display:inline-block;" rows=3 cols=50><%= direction.description %></textarea></td>
+        </tr>
+      <% end %>
+     <% end %>
+     
+    </table> 
+    <button id="add_more_directions" class="btn btn-success">Add another direction</button>
+
+  </div>
+</div>
