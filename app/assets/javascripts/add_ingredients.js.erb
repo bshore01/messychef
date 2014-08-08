@@ -2,7 +2,7 @@ $(document).ready(function(){
   riuId = $(".edit-ingredients").length-1;
 
   // make the first ingredient, except if we're in the edit path
-  if($(".edit-ingredients") === []){
+  if($(".edit-ingredients").length === 0){
     addIngredient(riuId);
   }
 

@@ -4,7 +4,7 @@ $(document).ready(function(){
   updateStepNumber();
 
   // make the first direction, except if we're in the edit path
-  if($(".edit-directions") === []){
+  if($(".edit-directions").length === 0){
     addDirection(directionId);
   }
 
