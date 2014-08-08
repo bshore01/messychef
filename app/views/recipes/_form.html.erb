@@ -1,30 +1,42 @@
-<form action="/recipes" method="post" id="recipe_form">
+<br><br>
+
+<form action="/recipes" method="post" id="recipe_form" role="form">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    
-  Title: <input type="text" name="recipe[title]" value=""><br>
-  Description: <textarea name="recipe[description]" rows=7 cols=50 value=""></textarea><br><br>
 
-  <div>
-    Add ingredients:
-    <table id="add_ingredients">
-     <tr>
-       <th></th>
-       <th>Name</th>
-       <th>Amount</th>
-       <th>Unit of Measurement (optional)</th>
-     </tr>
-    </table>    
+  <div class="row">
+    <div class="form-group col-md-4">
+      Title: <input type="text" name="recipe[title]" value="" class="form-control"><br><br>
+      Description: <textarea name="recipe[description]" rows=7 cols=50 value="" class="form-control"></textarea><br>
+    </div>  
   </div>
-  <button id="add_more_ingredients">(+) Add ingredient</button>
-
-  <br><br>
   
-  <div id="add_directions">
-    Add directions:  
+  <div class="row">
+    <div class="form-group col-md-8">
+      Add ingredients:
+      <table id="add_ingredients" class="table table-bordered">
+       <tr >
+         <th></th>
+         <th style="text-align:center;">Name</th>
+         <th style="text-align:center;">Amount</th>
+         <th style="text-align:center;">Unit of Measurement (optional)</th>
+       </tr>
+      </table>    
+      <button id="add_more_ingredients" class="btn btn-success">Add another ingredient</button>
+    </div>
   </div>
-  <button id="add_more_directions">(+) Add direction</button>
-
-  <br><br>
   
-  <input type="submit" value="Submit">
+  <br>
+  
+  <div class="row">
+    <div class="form-group col-md-4">
+      Add directions: 
+      <table id="add_directions" class="table table-bordered">
+      </table> 
+      <button id="add_more_directions" class="btn btn-success">Add another direction</button>
+    </div>
+  </div>
+
+  <br>
+  
+  <input type="submit" value="Create recipe!" class="btn btn-danger">
 </form>

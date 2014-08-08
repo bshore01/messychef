@@ -23,10 +23,10 @@ $(document).ready(function(){
 function addIngredient(riuId){
   $("#add_ingredients").append(
     '<tr>'+
-      '<td><button class="delete_this_ingredient">x</button></td>'+
-      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient]"></td>'+
-      '<td><input type="number" name="recipe[recipe_ingredient_units]['+riuId+'][amount]"></td>'+
-      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][unit]"></td>'+
+      '<td><button class="delete_this_ingredient btn btn-danger">x</button></td>'+
+      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient]" class="form-control"></td>'+
+      '<td><input type="number" name="recipe[recipe_ingredient_units]['+riuId+'][amount]" class="form-control"></td>'+
+      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][unit]" class="form-control"></td>'+
     '</tr>'
   );
 }

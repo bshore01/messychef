@@ -22,9 +22,9 @@ $(document).ready(function(){
 
 function addDirection() {
   $("#add_directions").append(
-    '<div id="direction-'+directionId+'">'+
-      '<button class="delete_this_direction">x</button>'+
-      '<input type="text" name="recipe[directions]['+directionId+'][description]" value="">'+
-    '</div>'
+    '<tr id="direction-'+directionId+'" style="white-space:nowrap;">'+
+      '<td><button class="delete_this_direction btn btn-danger" style="display:inline-block;">x</button></td>'+
+      '<td><textarea name="recipe[directions]['+directionId+'][description]" value="" class="form-control" style="display:inline-block;" rows=3 cols=50></textarea></td>'+
+    '</tr>'
   );
 }
