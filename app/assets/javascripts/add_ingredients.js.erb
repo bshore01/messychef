@@ -1,16 +1,13 @@
 var riuId = 0;
 
+
 $(document).ready(function(){
-  // make the first add ingredient select
+  // make the first ingredient
   addIngredient(riuId);
 
-  // apply select 2 magic
-  $("#add_ingredients").children("div").children("select").select2();
-
-  // add more ingredients
+  // add another ingredient
   $("#add_more_ingredients").click(function(e){
     e.preventDefault();
-
     riuId++;
     addIngredient(riuId);
   });
@@ -18,42 +15,18 @@ $(document).ready(function(){
   // delete an ingredient
   $("#add_ingredients").on('click', '.delete_this_ingredient', function(e){
     e.preventDefault();
-
-    this.parentElement.remove();
+    this.parentElement.parentElement.remove();
   });
 });
 
+
 function addIngredient(riuId){
-  $("#add_ingredients")
-      .children("div").children("select")
-
-      // call destroy to revert the changes made by Select2
-      .select2("destroy").end()
-
-  $("#add_ingredients")
-      // append another ingredients select 
-      .append(
-        '<div>'+
-        '<button class="delete_this_ingredient">x</button>'+
-
-        '<select id="select_ingredient" data-placeholder="- Add an ingredient -" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient_id]">'+
-          '<option></option>'+
-          '<% Ingredient.order("lower(name)").each do |i| %>'+
-            '<option value="<%= i.id %>"><%= i.name.downcase %></option>'+
-          '<% end %>'+
-        '</select>'+
-
-        '<input type="number" name="recipe[recipe_ingredient_units]['+riuId+'][amount]">'+
-
-        '<select id="select_unit" data-placeholder="- Add unit of measurement -" name="recipe[recipe_ingredient_units]['+riuId+'][unit_id]">'+
-          '<option></option>'+
-          '<% Unit.order("lower(unit)").each do |u| %>'+
-            '<option value="<%= u.id %>"><%= u.unit.downcase %></option>'+
-          '<% end %>'+
-        '</select>'+
-        '</div>'
-      );
-
-  // enable Select2 on the select elements
-  $("#add_ingredients").children("div").children("select").select2();
+  $("#add_ingredients").append(
+    '<tr>'+
+      '<td><button class="delete_this_ingredient">x</button></td>'+
+      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][ingredient]"></td>'+
+      '<td><input type="number" name="recipe[recipe_ingredient_units]['+riuId+'][amount]"></td>'+
+      '<td><input type="text" name="recipe[recipe_ingredient_units]['+riuId+'][unit]"></td>'+
+    '</tr>'
+  );
 }
