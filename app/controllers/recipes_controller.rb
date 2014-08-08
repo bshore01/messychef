@@ -41,6 +41,7 @@ class RecipesController < ApplicationController
     results = wit.message(message)
     @intent = results["outcomes"][0]["intent"]
     @entity = results["outcomes"][0]["entities"]
+    @query = @entity.flatten.flatten.to_s
     @confidence = results["outcomes"][0]["confidence"]
     
     
@@ -49,7 +50,11 @@ class RecipesController < ApplicationController
 
     elsif @confidence >= 0.50 && @intent == "directions" && @entity.keys.first == "back"
         render json: "back"
-      
+
+    elsif @confidence >= 0.50 && @intent == "search"
+        render json: "search #{@query}"
+        
+
     else
         render json: ""
     end

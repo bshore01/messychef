@@ -1,4 +1,31 @@
+
+  <script>
+        jQuery(document).ready(function() {
+
+          $( "#voice-search" ).click(function() {
+            alert("MessyChef is now listening, be sure to Enable the Browser's Microphone. Say something like \"Find Recipes with Chicken\" ");
+              console.log("starting mic");
+            messyChef.init();
+          });
+
+        });
+
+        window.onbeforeunload = function (e) {
+          var message = "Your confirmation message goes here.",
+          e = e || window.event;
+          // For IE and Firefox
+          if (e) {
+            e.returnValue = message;
+          }
+
+          // For Safari
+          return message;
+        };
+  </script>
+  <div id="interim">Start</div>
   <div id="landing-page-container" >
+
+
     
     <div id="searchbox">
       <h1 class="searchh1">Find a recipe</h1>
@@ -12,6 +39,9 @@
         </span>
         </div>
       </form>
+      <br>
+      <h1 class="searchh1" style="font-size:20px; color:black; font-weight: bold;">...Or Tell MessyChef to Find a Recipe</h1>
+      <input id = "voice-search" type="image" src="http://i.imgur.com/aiXd0Eo.png" name="submit" width="20%" height="20%" />
     </div>
 
   </div>
