@@ -1,6 +1,6 @@
 <br><br>
 
-<form action="/recipes" method="post" id="recipe_form" role="form">
+<form action="/recipes" method="post" id="recipe_form" enctype="multipart/form-data" role="form">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
   <%= render 'recipes/fields/title', recipe: @recipe %>
@@ -8,6 +8,10 @@
   <hr>
 
   <%= render 'recipes/fields/description', recipe: @recipe %>  
+
+  <hr>
+
+  <%= render 'recipes/fields/image', recipe: @recipe %>  
 
   <hr>
   
