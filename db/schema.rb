@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140804194432) do
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
     t.integer  "unit_id"
-    t.integer  "amount"
+    t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
