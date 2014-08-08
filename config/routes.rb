@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'welcome/hello'
 
+  get 'about/index'
 
 
   #root :to => "welcome#hello"
