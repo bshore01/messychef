@@ -66,8 +66,8 @@ class RecipesController < ApplicationController
 
     recipe_params[:recipe_ingredient_units].each do |riuId, hash|
       # find or create ingredients & units, associate to recipe
-      @ingredient = Ingredient.find_or_create_by(name: hash[:ingredient].downcase.gsub(/\s+/, " "))
-      @unit = Unit.find_or_create_by(unit: hash[:unit].downcase.gsub(/\s+/, " "))
+      @ingredient = Ingredient.find_or_create_by(name: hash[:ingredient].downcase.strip.gsub(/\s+/, " "))
+      @unit = Unit.find_or_create_by(unit: hash[:unit].downcase.strip.gsub(/\s+/, " "))
       @recipe.recipe_ingredient_units.build(ingredient_id: @ingredient.id, unit_id: @unit.id, amount: hash[:amount])
     end 
     
