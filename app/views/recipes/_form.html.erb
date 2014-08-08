@@ -4,11 +4,20 @@
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
   <div class="row">
-    <div class="form-group col-md-4">
-      Title: <input type="text" name="recipe[title]" value="" class="form-control"><br><br>
-      Description: <textarea name="recipe[description]" rows=7 cols=50 value="" class="form-control"></textarea><br>
-    </div>  
+    <div class="col-md-4">
+      Title: <input type="text" name="recipe[title]" value="" class="form-control">
+    </div>
   </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      Description: <textarea name="recipe[description]" rows=7 cols=50 value="" class="form-control col-md-4"></textarea>
+    </div>
+  </div>
+
+  <hr>
   
   <div class="row">
     <div class="form-group col-md-8">
@@ -25,18 +34,23 @@
     </div>
   </div>
   
-  <br>
+  <hr>
   
   <div class="row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-8">
       Add directions: 
       <table id="add_directions" class="table table-bordered">
+       <tr >
+         <th></th>
+         <th style="text-align:center;">Step #</th>
+         <th style="text-align:center;">Details</th>
+       </tr> 
       </table> 
       <button id="add_more_directions" class="btn btn-success">Add another direction</button>
     </div>
   </div>
 
-  <br>
+  <hr>
   
   <input type="submit" value="Create recipe!" class="btn btn-danger">
 </form>
