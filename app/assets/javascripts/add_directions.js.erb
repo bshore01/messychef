@@ -1,11 +1,12 @@
 $(document).ready(function(){
   directionId = $(".edit-directions").length-1;
 
-  updateStepNumber();
-
   // make the first direction, except if we're in the edit path
   if($(".edit-directions").length === 0){
     addDirection(directionId);
+    updateStepNumber();
+  }else{
+    updateStepNumber();
   }
 
   // add another direction
