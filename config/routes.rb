@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :ingredients
 
+  get 'recipes/search' => 'recipes#search'
+
   resources :recipes
 
   get 'welcome/hello'

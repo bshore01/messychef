@@ -1,0 +1,6 @@
+$(document).ready(function(){
+  $("#search-recipe").click(function(){
+    var recipe_type = $("#search-recipe-input").val(); 
+    window.location.href = "/recipes?searchterm=" +  recipe_type;
+  });
+});
