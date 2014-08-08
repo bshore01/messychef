@@ -1,8 +1,12 @@
-<form action="/recipes" method="post" id="recipe_form">
+<form action="/recipes" method="post" id="recipe_form" enctype="multipart/form-data">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     
   Title: <input type="text" name="recipe[title]" value=""><br>
   Description: <textarea name="recipe[description]" rows=7 cols=50 value=""></textarea><br><br>
+
+  Upload image: <input type="file" name="recipe[recipe_image]"> 
+
+  <br><br>
 
   <div>
     Add ingredients:
