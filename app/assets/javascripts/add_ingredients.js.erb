@@ -1,9 +1,10 @@
-var riuId = 0;
-
-
 $(document).ready(function(){
-  // make the first ingredient
-  addIngredient(riuId);
+  riuId = $(".edit-ingredients").length-1;
+
+  // make the first ingredient, except if we're in the edit path
+  if($(".edit-ingredients").length === 0){
+    addIngredient(riuId);
+  }
 
   // add another ingredient
   $("#add_more_ingredients").click(function(e){
@@ -19,7 +20,7 @@ $(document).ready(function(){
   });
 });
 
-
+// add html for inputting new ingredient when the button is clicked
 function addIngredient(riuId){
   $("#add_ingredients").append(
     '<tr>'+
