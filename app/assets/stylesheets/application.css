@@ -39,6 +39,10 @@
     text-align: center;
 
     background-image: url(/assets/images/landingbackground2.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     height:1155px;
 
 }
@@ -71,7 +75,7 @@
 #aboutbox {
     float: left;
     width: 50%;
-    min-width: 550px;
+    min-width: 540px;
     position: relative;
     left: 17.5%;
     padding: 10px;
@@ -84,7 +88,7 @@
     font-family: helvetica;
 
 }
-
+/*make non repeating */
 #aboutwrapper {
     float:left;
     width:1500;
@@ -93,6 +97,10 @@
     text-align: center;
     
     background-image: url(/assets/images/landingbackground3.jpg);
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     height:800px;
 
 }
