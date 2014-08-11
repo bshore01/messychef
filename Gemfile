@@ -52,3 +52,7 @@ gem 'font-awesome-rails'
 
 #autocomplete
 gem 'select2-rails'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'
