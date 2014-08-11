@@ -8,10 +8,11 @@ class Recipe < ActiveRecord::Base
 
   # Paperclip (upload image)
   has_attached_file :recipe_image , :styles => { :medium => "300x300>" }, 
-                    :default_url => "/images/:style/bullet.png",
+                    # :default_url => "/images/:style/bullet.png",
                     # :default_url => ":rails_root/public/simon_point.jpg",
                     # url for images
-                    :url => "/assets/recipes/:id/:basename.:extension"
+                    # :url => "/assets/recipes/:id/:basename.:extension"
+                    :url => "https://messychefrecipeimage.s3.amazonaws.com"
                     # path to store images
                     # :path => ":rails_root/public/assets/recipes/:id/:basename.:extension"
   # validates_attachment_content_type :recipe_image, :content_type => /\Aimage\/.*\Z/
