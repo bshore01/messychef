@@ -9,10 +9,10 @@ Unit.destroy_all
 
 puts "Creating users..."
 
-  natalie = User.create(name: "Natalie", email: "natalie.arellano@gmail.com")
-  ben = User.create(name: "Ben", email: "ben.shore@gmail.com")
-  kris = User.create(name: "Kris", email: "kris.croes@gmail.com")
-  ana = User.create(name: "Ana", email: "ana.perez@gmail.com")
+  natalie = User.create(name: "Natalie", email: "natalie12857742345@gmail.com")
+  ben = User.create(name: "Ben", email: "ben122334558@gmail.com")
+  kris = User.create(name: "Kris", email: "kris1846483@gmail.com")
+  ana = User.create(name: "Ana", email: "ana184639393@gmail.com")
 
 
 puts "Creating Recipe #1: Chocolate Peanut Butter Mousse–Filled Cupcakes"
