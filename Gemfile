@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 # Paperclip for image uploading
 gem "paperclip", "~> 4.1"
 gem 'aws-sdk'
+gem 'rmagick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -59,3 +60,5 @@ gem 'select2-rails'
 gem 'omniauth'
 
 gem 'omniauth-facebook'
+
+
