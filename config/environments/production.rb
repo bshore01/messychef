@@ -89,8 +89,8 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'messychefrecipeimage',
-      :access_key_id => 'AKIAJBK3XXQ47GVISK4A',
-      :secret_access_key => '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'
+      :access_key_id => ENV['S3_APP_ID'],
+      :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
     }
   }
 
