@@ -4,7 +4,7 @@ class CreateRecipeIngredientUnits < ActiveRecord::Migration
       t.references :recipe
       t.references :ingredient
       t.references :unit
-      t.integer :amount
+      t.float :amount
 
       t.timestamps
     end

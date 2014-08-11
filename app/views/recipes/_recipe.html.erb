@@ -1,7 +1,8 @@
 <div class="col-md-6 col-sm-6">
   <div class="pricing-item">
     <a href="#">
-      <%= image_tag "fruit2.png", class: "img-responsive img-thumbnail", style: "max-width: 250px; float: left;" %>
+      <%#= image_tag "fruit2.png", class: "img-responsive img-thumbnail", style: "max-width: 250px; float: left;" %>
+    <%= image_tag recipe.recipe_image.url(:medium) %>
     </a>
     <div class="pricing-item-details">
       <h3><%= link_to recipe.title, recipe_path(recipe) %></h3>

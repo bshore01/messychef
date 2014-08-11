@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804194432) do
+ActiveRecord::Schema.define(version: 20140808170505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140804194432) do
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
     t.integer  "unit_id"
-    t.integer  "amount"
+    t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(version: 20140804194432) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "recipe_image_file_name"
+    t.string   "recipe_image_content_type"
+    t.integer  "recipe_image_file_size"
+    t.datetime "recipe_image_updated_at"
   end
 
   create_table "units", force: true do |t|

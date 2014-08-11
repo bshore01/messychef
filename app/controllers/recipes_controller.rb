@@ -77,6 +77,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(
       :title => recipe_params[:title],
       :description => recipe_params[:description],
+      :recipe_image => recipe_params[:recipe_image]
     )
     @recipe.make_rius_from_params(recipe_params)
     @recipe.make_directions_from_params(recipe_params)
@@ -131,6 +132,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :recipe_ingredient_units => [:amount, :ingredient, :unit], :directions => [:description] )
+      params.require(:recipe).permit(:title, :description, :recipe_image, :recipe_ingredient_units => [:amount, :ingredient, :unit], :directions => [:description] )
     end 
+    
 end

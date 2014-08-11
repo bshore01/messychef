@@ -6,6 +6,17 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_ingredient_units
   has_many :ingredients, through: :recipe_ingredient_units
 
+  # Paperclip (upload image)
+  has_attached_file :recipe_image , :styles => { :medium => "300x300>" }, 
+                    :default_url => "/images/:style/bullet.png",
+                    # :default_url => ":rails_root/public/simon_point.jpg",
+                    # url for images
+                    :url => "/assets/recipes/:id/:basename.:extension"
+                    # path to store images
+                    # :path => ":rails_root/public/assets/recipes/:id/:basename.:extension"
+  # validates_attachment_content_type :recipe_image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :recipe_image, :content_type => ['image/jpeg', 'image/png']
+
   def make_rius_from_params(recipe_params)
     recipe_params[:recipe_ingredient_units].each do |riuId, hash|
       # find or create ingredients & units, associate to recipe
