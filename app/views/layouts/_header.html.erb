@@ -90,7 +90,20 @@
                 <li><%= link_to "MessyChef Recipes", recipes_path %></li>
                 
                 <li><%= link_to "About", about_index_path %></li>
+              <% if logged_in? %>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to current_user.name, user_path(current_user) %></li>
+                    <li><img src = <%= current_user.image%>></li>
+
+                    <li><%= link_to "Log Out", signout_path %></li>
+                <% else %>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to "Log in with Facebook", "auth/facebook" %></li>
+                <% end %>
               </ul>
+              
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>

@@ -92,9 +92,11 @@ messyChef.speechRecognition = {
 
                 if (r.indexOf("next") !=-1) { 
                     console.log("before the click");
+                    
                     $('.flex-next').click();
 
                 } else if (r.indexOf("back") !=-1 ){
+
                     $('.flex-prev').click();
                 } else if (r.indexOf("search") !=1) {
                     
@@ -102,7 +104,7 @@ messyChef.speechRecognition = {
                     var a = r.substr(valPos);
                     var b = a.length - 3;
                     var searchTerm = a.substr(0, b);
-                    debugger
+                    
                     $('.form-control').val(searchTerm);
                     $('button').click();
                     console.log("this is searching..");
