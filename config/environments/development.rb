@@ -34,4 +34,15 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Amazon S3
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'messychefrecipeimage',
+      :access_key_id => 'AKIAJBK3XXQ47GVISK4A',
+      :secret_access_key => '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'
+    }
+  }
+
 end
