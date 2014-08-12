@@ -1,4 +1,4 @@
-
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script type="text/javascript" charset="utf-8">
   $(window).load(function() {
 
@@ -14,9 +14,80 @@
   window.onbeforeunload = function (e) {
     messyChef.stop();
   };
+  
+  $(function() {
+    var progressTimer,
+      progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" ),
+      dialogButtons = [{
+        text: "Cancel Download",
+        click: closeDownload
+      }],
+      dialog = $( "#dialog" ).dialog({
+        autoOpen: false,
+        closeOnEscape: false,
+        resizable: false,
+        buttons: dialogButtons,
+        open: function() {
+          progressTimer = setTimeout( progress, 6000 );
+        },
+        beforeClose: function() {
+          downloadButton.button( "option", {
+            disabled: false,
+            label: "Start Download"
+          });
+        }
+      }),
+      downloadButton = $( "#downloadButton" )
+        .button()
+        .on( "click", function() {
+          $( this ).button( "option", {
+            disabled: true,
+            label: "Downloading..."
+          });
+          dialog.dialog( "open" );
+        });
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( "Please give me a quick second" );
+      },
+      complete: function() {
+        progressLabel.text( "Hmm, I'm sorry, you may want to refresh the page." );
+        dialog.dialog( "option", "buttons", [{
+          text: "Close",
+          click: closeDownload
+        }]);
+        $(".ui-dialog button").last().focus();
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + Math.floor( Math.random() * 3 ) );
+ 
+      if ( val <= 99 ) {
+        progressTimer = setTimeout( progress, 50 );
+      }
+    }
+ 
+    function closeDownload() {
+      clearTimeout( progressTimer );
+      dialog
+        .dialog( "option", "buttons", dialogButtons )
+        .dialog( "close" );
+      progressbar.progressbar( "value", false );
+      progressLabel
+        .text( "MessyChef is interpreting..." );
+      downloadButton.focus();
+    }
+  });
+  
 </script>
 
-<div id="interim">Start</div>
+
 <div class="inner-page padd">
   <div class="recipe">
     <div class="container">
@@ -59,6 +130,13 @@
           <div class="row">
             <div class="col-md-8">
               <div class="recipe-item">
+                  <div id="interim">Start</div>
+                  <span id="dialog" title="">
+                    <img alt="Chef icon" class="img-responsive" style="margin-left:auto; margin-right: auto;"src="/assets/chef-icon.jpg">
+                    <span class="progress-label">Interpreting your beautiful voice...</span>
+                    <span id="progressbar"></span>
+                  </span>
+                  <button id="downloadButton">Start Download</button>
                 <h5>Directions:</h5>
               </div>
             </div>

@@ -66,6 +66,7 @@ messyChef.speechRecognition = {
         if (tmpTime - this.lastRecognition > this.timeBetweenCommands) {
             this.lastRecognition = tmpTime;
             this.final_transcript = '';
+            $('#downloadButton').click();
             return true;
         } else return false;
     },
@@ -94,10 +95,12 @@ messyChef.speechRecognition = {
                     console.log("before the click");
                     
                     $('.flex-next').click();
+                    $('.ui-button-text').click();
 
                 } else if (r.indexOf("back") !=-1 ){
 
                     $('.flex-prev').click();
+                    $('.ui-button-text').click();
                 } else if (r.indexOf("search") !=1) {
                     
                     var valPos = r.indexOf("value") + 9;

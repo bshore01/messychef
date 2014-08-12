@@ -105,6 +105,50 @@
 
 }
 
+#progressbar {  
+    margin-top: 10px;
+    /*border-style: solid;
+    border-color: gray;*/
+
+}
+
+#downloadButton {
+    visibility: hidden;
+}
+
+.ui-dialog {
+    background-color: white;
+    text-align: center;
+    opacity: 1;
+    z-index: 99999; 
+    font-size: 24px;
+    background-size: 80px 30px;
+
+}
+
+#dialog {
+    
+}
+
+
+
+.ui-dialog button{
+    visibility: hidden;
+}
+
+.ui-button-text {
+    visibility: hidden;
+}
+
+.progress-label {
+font-weight: bold;
+text-shadow: 1px 1px 0 #fff;
+}
+
+.ui-dialog-titlebar-close {
+display: none;
+}
+
 .footer {
     clear:both;
     
