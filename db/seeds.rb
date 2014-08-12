@@ -28,7 +28,7 @@ class Scraper
 
         recipe.recipe_ingredient_units.build(ingredient_id: i.id, unit_id: u.id)
       end 
-
+      
       i = 0
       page.css('div.directLeft li span').each do |direction|
         recipe.directions.build(sequence: i+1,  description: direction.text)

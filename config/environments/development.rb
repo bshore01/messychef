@@ -36,13 +36,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Amazon S3
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => 'messychefrecipeimage',
-      :access_key_id => 'AKIAJ5T44RORNWMXGIBA',
-      :secret_access_key => '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'
-    }
-  }
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => 'messychefrecipeimage',
+  #     :access_key_id => ENV['S3_APP_ID'],
+  #     :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
+  #   }
+  # }
 
 end
