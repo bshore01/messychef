@@ -64,3 +64,5 @@ gem 'omniauth-facebook'
 
 gem 'nokogiri'
 
+gem 'unicorn'
+
