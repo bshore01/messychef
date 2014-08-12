@@ -3,8 +3,9 @@
     <!-- Header top area content -->
     <div class="row">
       <div class="col-md-4 col-sm-5">
+
         <!-- Link -->
-        <%= link_to recipes_path do %>
+        <%= link_to root_path do %>
           <div class="logo">
             <%= image_tag "chef-icon.jpg", class: "img-responsive" %>
             <!-- Heading -->
@@ -12,6 +13,7 @@
           </div>
         <% end %>
       </div>
+
       <div class="col-md-8 col-sm-7">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-right" role="navigation">
@@ -29,81 +31,27 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="/"> Home</a></li>
-                <li class="dropdown hidden-xs">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> My Cookbook <b class="caret"></b></a>
-                  <ul class="dropdown-menu dropdown-md">
-                    <li>
-                      <div class="row">
-                        <div class="col-md-4 col-sm-6">
-                          <!-- Menu Item -->
-                          <div class="menu-item">
-                            <!-- Heading -->
-                            <h3>Vegetarian</h3>
-                            <!-- Image -->
-                            <img src="img/dish/dish1.jpg" class="img-responsive" alt="">
-                            <!-- Paragraph -->
-                            <p>Sea nut perspicacity under omni piste natures mirror of there with consequent.</p>
-                            <!-- Button -->
-                            <a href="menu.html" class="btn btn-danger btn-xs">View Menu</a>
-                          </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-                          <!-- Menu Item -->
-                          <div class="menu-item">
-                            <!-- Heading -->
-                            <h3>Non-Vegetarian</h3>
-                            <!-- Image -->
-                            <img src="img/dish/dish2.jpg" class="img-responsive" alt="">
-                            <!-- Paragraph -->
-                            <p>Sea nut perspicacity under omni piste natures mirror as precode consequent.</p>
-                            <!-- Button -->
-                            <a href="menu.html" class="btn btn-danger btn-xs">View Menu</a>
-                          </div>
-                        </div>
-                        <div class="col-md-4">
-                          <!-- Menu Item -->
-                          <div class="menu-item">
-                            <!-- Heading -->
-                            <h3>Special Menu</h3>
-                            <!-- Image -->
-                            <img src="img/dish/dish3.jpg" class="img-responsive" alt="">
-                            <!-- Paragraph -->
-                            <p>Sea nut perspicacity under omni piste natures mirror consequent.</p>
-                            <!-- Button -->
-                            <a href="menu.html" class="btn btn-danger btn-xs">View Menu</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
-                <li class="dropdown visible-xs">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"> My Cookbook <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <!-- put in user's recipes -->
-                    <li><a href="menu.html">Vegetarian</a></li>
-                    <li><a href="menu.html">Non Vegetarian</a></li>
-                    <li><a href="menu.html">Special Menu</a></li>
-                  </ul>
-                </li>
-                <li><%= link_to "MessyChef Recipes", recipes_path %></li>
+                <% if logged_in? %>                
+                  <li><%= link_to "My Cookbook", user_cookbook_path(current_user, current_user.cookbooks.first) %></li>
+                <% end %>
+
+                <li><%= link_to "Recipes", recipes_path %></li>
                 
                 <li><%= link_to "About", about_index_path %></li>
-              <% if logged_in? %>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><%= link_to current_user.name, user_path(current_user) %></li>
-                    <li><img src = <%= current_user.image%>></li>
-
-                    <li><%= link_to "Log Out", signout_path %></li>
-                <% else %>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                  <li><%= link_to "Log in with Facebook", "auth/facebook" %></li>
-                <% end %>
               </ul>
-              
+
+              <ul class="nav navbar-nav navbar-right">
+                <% if logged_in? %>
+                  <li>
+                    <%= link_to user_path(current_user) do %>
+                      <img src="<%= current_user.image%>">
+                    <% end %>
+                  </li>
+                  <li><%= link_to "Log Out", signout_path %></li>
+                <% else %>
+                  <li><%= link_to "Log in with Facebook", "/auth/facebook" %></li>
+                <% end %>
+              </ul>  
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>

@@ -30,11 +30,14 @@
                 <% if @recipe.scraped == true %>
                   <img src="<%= @recipe.recipe_image_file_name %>" class="img-responsive img-thumbnail">
                 <% else %>
-                  <%= image_tag recipe.recipe_image.url(:medium), class: "img-responsive img-thumbnail" %>
+                  <%#= image_tag recipe.recipe_image.url(:medium), class: "img-responsive img-thumbnail" %>
                 <% end %>
               </div>
 
               <h3><a href="#"><%= @recipe.title %></a></h3> 
+              <% if logged_in? && !current_user.recipes.include?(@recipe) %>
+                <h3><button class="btn btn-success">Add to Cookbook</button></h3>
+              <% end %>
 
               <hr>
 
@@ -43,6 +46,8 @@
               <div class="clearfix"></div>
             </div>
           </div>
+
+
 
           <div class="row">
             <div class="recipe">

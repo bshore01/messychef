@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.order("created_at DESC")
   end
 
   def search
@@ -62,7 +62,6 @@ class RecipesController < ApplicationController
 
     elsif @confidence >= 0.50 && @intent == "search"
         render json: "search #{@query}"
-        
 
     else
         render json: ""
@@ -72,7 +71,6 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create 
-    # raise params.inspect
     # setup new instance
     @recipe = Recipe.new(
       :title => recipe_params[:title],
@@ -81,6 +79,11 @@ class RecipesController < ApplicationController
     )
     @recipe.make_rius_from_params(recipe_params)
     @recipe.make_directions_from_params(recipe_params)
+
+    if params[:add_to_cookbook] == "yes"
+      current_user.cookbooks.first.recipes << @recipe
+      current_user.save
+    end 
 
     respond_to do |format|
       if @recipe.save 

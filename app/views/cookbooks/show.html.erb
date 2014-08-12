@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_cookbook_path(@cookbook) %> |
-<%= link_to 'Back', cookbooks_path %>
+<div class="main-content">
+  <div class="pricing padd">
+    <div class="container">
+      <h3><%= current_user.name %>'s Cookbook</h3>
+      <%= link_to 'Add a new recipe!', new_recipe_path, class: "btn btn-success" %>
+      <div class="row">
+        <% current_user.recipes.order("created_at DESC").each do |recipe| %>
+          <%= render 'recipes/recipe', recipe: recipe %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

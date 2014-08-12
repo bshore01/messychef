@@ -1,11 +1,11 @@
-User.destroy_all
-Cookbook.destroy_all
-RecipeCookbook.destroy_all
-Recipe.destroy_all
-Direction.destroy_all
-RecipeIngredientUnit.destroy_all
-Ingredient.destroy_all
-Unit.destroy_all
+# User.destroy_all
+# Cookbook.destroy_all
+# RecipeCookbook.destroy_all
+# Recipe.destroy_all
+# Direction.destroy_all
+# RecipeIngredientUnit.destroy_all
+# Ingredient.destroy_all
+# Unit.destroy_all
 
 class Scraper 
   attr_accessor :page
@@ -15,6 +15,8 @@ class Scraper
   end 
 
   def create_recipe_from_page
+    # binding.pry
+    
     unless Recipe.find_by(title: page.css('h1#itemTitle').text)
       recipe = Recipe.new
       recipe.scraped = true
