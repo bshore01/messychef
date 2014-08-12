@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808170505) do
+ActiveRecord::Schema.define(version: 20140811194309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140808170505) do
     t.string   "recipe_image_content_type"
     t.integer  "recipe_image_file_size"
     t.datetime "recipe_image_updated_at"
+    t.boolean  "scraped",                   default: false
   end
 
   create_table "units", force: true do |t|

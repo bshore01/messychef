@@ -59,3 +59,7 @@ gem 'select2-rails'
 gem 'omniauth'
 
 gem 'omniauth-facebook'
+
+gem 'nokogiri'
+
+require 'open-uri'
