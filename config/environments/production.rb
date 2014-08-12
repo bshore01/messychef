@@ -85,13 +85,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => 'messychefrecipeimage',
-      :access_key_id => ENV['S3_APP_ID'],
-      :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
-    }
-  }
+  # config.paperclip_defaults = {
+  #   :storage => :s3,
+  #   :s3_credentials => {
+  #     :bucket => 'messychefrecipeimage',
+  #     :access_key_id => ENV['S3_APP_ID'],
+  #     :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
+  #   }
+  # }
 
 end

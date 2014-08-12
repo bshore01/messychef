@@ -4,7 +4,11 @@
       <%#= image_tag "fruit2.png", class: "img-responsive img-thumbnail", style: "max-width: 250px; float: left;" %>
     <% case recipe.scraped %>
       <% when true %>
-      <img src="<%= recipe.recipe_image_file_name %>">
+        <img src="<%= recipe.recipe_image_file_name %>">
+      <% when false %>
+        <div class="col-md-6 col-sm-6" style="height:250px">
+          <%= image_tag recipe.recipe_image.url(:medium) %>
+        </div>
     <% end %>
     </a>
     <div class="pricing-item-details">
