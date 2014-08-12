@@ -16,6 +16,5 @@ class ApplicationController < ActionController::Base
       session[:user_id] = nil
     end
   end
-
   
 end
