@@ -1,3 +1,9 @@
+<script>
+  $(document).ready(function(){
+    $("#share a").jqSocialSharer();
+  });  
+</script>
+
 <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <script type="text/javascript" charset="utf-8">
   $(window).load(function() {
@@ -88,6 +94,16 @@
 </script>
 
 
+<meta property="og:title" content="<%=@recipe.title%>"/>
+<meta property="og:type" content="recipe"/>
+<meta property="og:url" content="http://messychef.herokuapp.com/recipes/<%=@recipe.id%>"/>
+<meta property="og:image" content=""/>
+<meta property="og:site_name" content="MESSYCHEF"/>
+<meta property="og:description"
+      content="<%=@recipe.description%>"/>
+
+
+<div id="interim">Start</div>
 
 <div class="inner-page padd">
   <div class="blog">
@@ -112,11 +128,16 @@
 
               <hr>
 
-              <p><%= @recipe.description %></p>
+              <p><%= @recipe.description %>
+                <div id="share"> 
+                  <br><a href="#" class="facebook" data-social='{"type":"facebook", "url":"http://messychef.herokuapp.com/recipes/<%=@recipe.id%>", "text": ""}' title="">&nbsp &nbsp &nbsp Share with friends</a><br>
+              </div>
+              </p>
 
               <div class="clearfix"></div>
             </div>
           </div>
+
 
           <div class="row">
             <div class="recipe">

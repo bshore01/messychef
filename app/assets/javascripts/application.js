@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-
+//= require jqSocialSharer.min
 //= require select2
 //= require jquery.scrollTo
 //= require bootstrap
