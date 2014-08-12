@@ -75,7 +75,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(
       :title => recipe_params[:title],
       :description => recipe_params[:description],
-      :recipe_image => recipe_params[:recipe_image]
+       :recipe_image => recipe_params[:recipe_image]
     )
     @recipe.make_rius_from_params(recipe_params)
     @recipe.make_directions_from_params(recipe_params)
