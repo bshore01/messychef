@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
     if @confidence >= 0.50 && @intent == "directions" && @entity.keys.first == "next" 
         render json: "next"
 
-    elsif @confidence >= 0.50 && @intent == "directions" && @entity.keys.first == "back"
+    elsif @confidence >= 0.50 && @intent == "backward" && @entity.keys.first == "back"
         render json: "back"
 
     elsif @confidence >= 0.50 && @intent == "search"
