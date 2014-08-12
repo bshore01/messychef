@@ -61,8 +61,14 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-scrollto-rails (1.4.3)
       railties (> 3.1, < 5.0)
+<<<<<<< HEAD
     jquery-ui-rails (5.0.0)
       railties (>= 3.2.16)
+=======
+    jquery-ui-rails (4.0.4)
+      jquery-rails
+      railties (>= 3.1.0)
+>>>>>>> 0c744199c3fc6659ecd8f86c6ee8b9d40f4010f4
     json (1.8.1)
     jwt (1.0.0)
     mail (2.5.4)
@@ -142,9 +148,11 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
+
+    sdoc (0.4.1)
+      json (~> 1.7, >= 1.7.7)
+      rdoc (~> 4.0)
+
     select2-rails (3.5.9)
       thor (~> 0.14)
     slop (3.6.0)
