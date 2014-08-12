@@ -61,4 +61,6 @@ gem 'omniauth'
 
 gem 'omniauth-facebook'
 
+gem 'nokogiri'
 
+require 'open-uri'

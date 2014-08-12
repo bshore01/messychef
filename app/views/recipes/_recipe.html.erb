@@ -2,14 +2,9 @@
   <div class="pricing-item">
     <a href="#">
       <%#= image_tag "fruit2.png", class: "img-responsive img-thumbnail", style: "max-width: 250px; float: left;" %>
-    <%#= image_tag recipe.recipe_image.url(:medium) %>
-    <% case recipe.id %>
-      <% when 1 %>
-        <img class="img-responsive img-thumbnail" style="max-height: 150px; float: left;" src="http://bit.ly/1r5plJ5">
-      <% when 2 %>
-        <img class="img-responsive img-thumbnail" style="max-height: 150px; height: auto; float: left;" src="http://www.epicurious.com/images/recipesmenus/2011/2011_november/367891.jpg">
-      <% when 3 %>
-        <img class="img-responsive img-thumbnail" style="max-height: 150px; float: left;" src="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2011/8/4/2/IG0509_panzanella_s4x3.jpg.rend.sni12col.landscape.jpeg">
+    <% case recipe.scraped %>
+      <% when true %>
+      <img src="<%= recipe.recipe_image_file_name %>">
     <% end %>
     </a>
     <div class="pricing-item-details">
