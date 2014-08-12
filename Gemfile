@@ -28,9 +28,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Paperclip for image uploading
-gem "paperclip", "~> 4.1"
-# gem 'aws-sdk'
-gem 'rmagick'
+# gem "paperclip", "~> 4.1"
+# # gem 'aws-sdk'
+# gem 'rmagick'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -64,4 +64,3 @@ gem 'omniauth-facebook'
 
 gem 'nokogiri'
 
-require 'open-uri'
