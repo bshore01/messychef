@@ -40,8 +40,8 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'messychefrecipeimage',
-      :access_key_id => 'AKIAJBK3XXQ47GVISK4A',
-      :secret_access_key => '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'
+      :access_key_id => 'AKIAJ5T44RORNWMXGIBA',
+      :secret_access_key => '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'
     }
   }
 
