@@ -54,7 +54,11 @@
                       <li>
                         <i class="fa fa-check">
                         </i>
-                        <%= riu.amount %> <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) if riu.unit_id %> <%= Ingredient.find(riu.ingredient_id).name %>
+                        <% if @recipe.scraped == false %>
+                          <%= riu.amount %> <%= Unit.find(riu.unit_id).unit.pluralize(riu.amount) if riu.unit_id %> <%= Ingredient.find(riu.ingredient_id).name %>
+                        <% else %>
+                          <%= riu.unit.unit %> <%= riu.ingredient.name %>
+                        <% end %>
                         <div class="clearfix"></div>
                       </li>
                     <% end %>
