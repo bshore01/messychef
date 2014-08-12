@@ -1,42 +1,44 @@
+<script>
+      jQuery(document).ready(function() {
 
-  <script>
-        jQuery(document).ready(function() {
-
-          $( "#voice-search" ).click(function() {
-            alert("MessyChef is now listening, be sure to Enable the Browser's Microphone. Say something like \"Find Recipes with Chicken\" ");
-              console.log("starting mic");
-            messyChef.init();
-          });
-
+        $( "#voice-search" ).click(function() {
+          alert("MessyChef is now listening, be sure to Enable the Browser's Microphone. Say something like \"Find Recipes with Chicken\" ");
+            console.log("starting mic");
+          messyChef.init();
         });
 
-        window.onbeforeunload = function (e) {
-          messyChef.stop();
-         
-        };
-  </script>
-  <div id="interim">Start</div>
-  <div id="landing-page-container" >
+      });
 
+      window.onbeforeunload = function (e) {
+        messyChef.stop();
+       
+      };
+</script>
+<div id="interim">Start</div>
+<div id="landing-page-container" >  
+  <div id="searchbox">
 
-    
-    <div id="searchbox">
-      <h1 class="searchh1">Find a recipe</h1>
-      <form class="form" role="form" action = "/recipes/search" method = "GET">
-        <div class="input-group">
+    <h1 class="searchh1">Find a recipe</h1>
+
+    <form class="form" role="form" action = "/recipes/search" method = "GET">
+      <div class="input-group">
+
         <%= token_tag %>
+
         <input type="text" class="form-control" placeholder="Search..." name = "q" id="landsearchform">
        
         <span class="input-group-btn" id="landsearchform">
-         <button class="btn btn-default" type="submit"><i class="fa fa-search" id="landsearchbutton"></i></button>
+          <button class="btn btn-default" type="submit"><i class="fa fa-search" id="landsearchbutton"></i></button>
         </span>
-        </div>
-      </form>
-      <br>
-      <h1 class="searchh1" style="font-size:24px; color:white; font-weight: bold;">...Or Tell MessyChef to Find a Recipe</h1>
-      <input id = "voice-search" type="image" style="-webkit-filter: invert(100%); filter: invert(100%); border-style: solid; border-color: black;" src="http://i.imgur.com/aiXd0Eo.png" name="submit" width="20%" height="20%" />
-    </div>
 
+      </div>
+    </form>
+
+    <br>
+
+    <h1 class="searchh1" style="font-size:24px; color:white; font-weight: bold;">...Or Tell MessyChef to Find a Recipe</h1>
+    
+    <input id = "voice-search" type="image" style="-webkit-filter: invert(100%); filter: invert(100%); border-style: solid; border-color: black;" src="http://i.imgur.com/aiXd0Eo.png" name="submit" width="20%" height="20%" />
   </div>
 
-   
+</div>

@@ -2,16 +2,13 @@
   <div class="pricing padd">
     <div class="container">
       <h3>The Recipes List</h3>
+      <% if logged_in? %>
+        <%= link_to 'Add a new recipe!', new_recipe_path, class: "btn btn-success" %>
+      <% end %>
       <div class="row">
         <% @recipes.each do |recipe| %>
           <%= render 'recipe', recipe: recipe %>
         <% end %>
-      </div>
-
-      <hr>
-      
-      <div class="row">
-        <%= link_to 'Add a new recipe!', new_recipe_path, class: "btn btn-success" %>
       </div>
     </div>
   </div>

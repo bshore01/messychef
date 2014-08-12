@@ -3,25 +3,13 @@
 <form action="/recipes" method="post" id="recipe_form" enctype="multipart/form-data" role="form">
   <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-  <%= render 'recipes/fields/title', recipe: @recipe %>
+  <%= render 'recipes/fields/fields' %>
 
-  <hr>
-
-  <%= render 'recipes/fields/description', recipe: @recipe %>  
-
-  <hr>
-
-  <%= render 'recipes/fields/image', recipe: @recipe %>  
-
-  <hr>
-  
-  <%= render 'recipes/fields/ingredients', recipe: @recipe %>  
-  
-  <hr>
-  
-  <%= render 'recipes/fields/directions', recipe: @recipe %>  
-
-  <hr>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" name="add_to_cookbook" value="yes" checked>Add to My Cookbook<br>
+    </label>
+  </div>
   
   <input type="submit" value="Create recipe!" class="btn btn-danger">
 </form>

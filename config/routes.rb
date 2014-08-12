@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :users do
+    resources :cookbooks
+  end 
   
-
-  resources :users
-
-  resources :cookbooks
-
   resources :ingredients
 
   get 'recipes/search' => 'recipes#search'
-
   resources :recipes
 
   get 'welcome/hello'
-
   get 'about/index'
-
 
   #root :to => "welcome#hello"
   root :to => "welcome#index"
@@ -25,7 +20,6 @@ Rails.application.routes.draw do
   resources :ingredients, only: [] do
     get :autocomplete_ingredient_name, :on => :collection
   end
-
 
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signout' => 'sessions#destroy', :as => :signout
