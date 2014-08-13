@@ -1,6 +1,17 @@
 <script>
   $(document).ready(function(){
     $("#share a").jqSocialSharer();
+
+    $("#add-to-cookbook").click(function(){
+      $.ajax({
+        url: "<%= add_recipe_to_cookbook_path %>",
+        data: {
+          user_id: <%= current_user.id %>,
+          recipe_id: <%= @recipe.id %>
+        },
+        dataType: "script"
+      });
+    });
   });  
 </script>
 
@@ -123,7 +134,7 @@
 
               <h3><a href="#"><%= @recipe.title %></a></h3> 
               <% if logged_in? && !current_user.recipes.include?(@recipe) %>
-                <h3><button class="btn btn-success">Add to Cookbook</button></h3>
+                <h3><button class="btn btn-success" id="add-to-cookbook">Add to Cookbook</button></h3>
               <% end %>
 
               <hr>

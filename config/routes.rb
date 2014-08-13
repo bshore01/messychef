@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signout' => 'sessions#destroy', :as => :signout
 
+  get 'add_recipe_to_cookbook' => 'recipe_cookbooks#add_recipe_to_cookbook', as: "add_recipe_to_cookbook"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
