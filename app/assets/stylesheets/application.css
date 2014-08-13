@@ -12,7 +12,7 @@
  *
  * require_tree .
  * require_self
- *= require font-awesome.min
+ *= require font-awesome
  *= require bootstrap
  *= require settings
  *= require style
@@ -50,6 +50,7 @@
 .searchh1 {
     font-size: 65px;
     color: white;
+    text-shadow: 1px 1px 1px #525051;
 }
 
 #landsearchform {
@@ -68,8 +69,21 @@
 }
 
 #landsearchbutton {
-    height: 33px;
-    
+    height: 36px;
+    position: relative; 
+    top: 5.5px;
+    font-size: 2em;
+    color:#525051;
+}
+
+#voice-search{
+
+    border-radius: 50%;
+    border-style: solid;
+    border-color: black;
+    background: white;
+
+   
 }
 
 #aboutbox {
@@ -183,4 +197,5 @@ display: none;
     font-size: 14px;
     font-weight: bold;
 }
+
 
