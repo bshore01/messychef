@@ -1,5 +1,5 @@
 .wrapper {
-  background-image: asset-url("crossword.png");
+  background-image: url("crossword.png");
   padding-bottom: 30px;
 
 }
@@ -11,7 +11,7 @@
     margin:0px;
     padding:0px;
     text-align: center;
-    background-image: asset-url("landingbackground2.jpg");
+    background-image: url("landingbackground2.jpg");
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -85,7 +85,7 @@
     padding:0px;
     text-align: center;
     
-    background-image: asset-url("landingbackground3.jpg");
+    background-image: url("landingbackground3.jpg");
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
