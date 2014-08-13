@@ -10,9 +10,6 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- * 
- * 
- * require font-awesome
  *= require bootstrap
  *= require settings
  *= require style
@@ -36,9 +33,9 @@
 
 #landing-page-container{
     float:left;
-    width:1733;
-    margin:0;
-    padding:0;
+    width:1733px;
+    margin:0px;
+    padding:0px;
     text-align: center;
     background-image: image-url('landingbackground2.jpg');
     background-size: cover;
@@ -109,9 +106,9 @@
 /*make non repeating */
 #aboutwrapper {
     float:left;
-    width:1500;
-    margin:0;
-    padding:0;
+    width:1500px;
+    margin:0px;
+    padding:0px;
     text-align: center;
     
     background-image: image-url('landingbackground3.jpg');
@@ -125,9 +122,6 @@
 
 #progressbar {  
     margin-top: 10px;
-    /*border-style: solid;
-    border-color: gray;*/
-
 }
 
 #downloadButton {
@@ -143,11 +137,6 @@
     background-size: 80px 30px;
 
 }
-
-#dialog {
-    
-}
-
 
 
 .ui-dialog button{
@@ -169,14 +158,12 @@ display: none;
 
 .footer {
     clear:both;
-    
     background-color: transparent;
     margin-top: 20px; 
     width: 100%;
     left: 0px;
     right: 0px;
-    bottom: 0px;
-    
+    bottom: 0px;    
 }
 
 .footerleft {
