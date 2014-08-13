@@ -4,10 +4,20 @@
         $( "#voice-search" ).click(function() {
           alert("MessyChef is now listening, be sure to Enable the Browser's Microphone. Say something like \"Find Recipes with Chicken\" ");
             console.log("starting mic");
-          messyChef.init();
+            messyChef.init();
+
+          $(this).attr("src", "http://i.imgur.com/GEUUxoL.png"); 
         });
 
       });
+
+
+
+
+
+
+
+
 
       window.onbeforeunload = function (e) {
         messyChef.stop();
@@ -38,7 +48,9 @@
 
     <h1 class="searchh1" style="font-size:24px; color:white; font-weight: bold;">...Or Tell MessyChef to Find a Recipe</h1>
     
-    <input id = "voice-search" type="image" style="-webkit-filter: invert(100%); filter: invert(100%); border-style: solid; border-color: black;" src="http://i.imgur.com/aiXd0Eo.png" name="submit" width="20%" height="20%" />
+    <input id = "voice-search" type="image" style="-webkit-filter: invert(100%); border-style: solid; border-color: black;" src="http://i.imgur.com/ut8Xf0j.png" name="submit" width="20%" height="20 %" />
   </div>
+
+
 
 </div>
