@@ -22,7 +22,6 @@
  *= require prettyPhoto
  *= require select2
  *= require select2-bootstrap
- //= depend_on_asset "landingbackground2.jpg"
  */
 
 
@@ -41,7 +40,7 @@
     padding:0;
     text-align: center;
 
-    background-image: url('landingbackground2.jpg');
+    background-image: image-url('landingbackground2.jpg');
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
