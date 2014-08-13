@@ -82,8 +82,6 @@ class RecipesController < ApplicationController
     @recipe.make_rius_from_params(recipe_params) if recipe_params[:recipe_ingredient_units].size > 0
     @recipe.make_directions_from_params(recipe_params) if recipe_params[:directions].size > 0
 
-    binding.pry
-
     respond_to do |format|
       if @recipe.save
         if params[:add_to_cookbook] == "yes"
