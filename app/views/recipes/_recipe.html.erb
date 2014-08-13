@@ -7,7 +7,11 @@
         <img src="<%= recipe.recipe_image_file_name %>">
       <% when false %>
         <div class="col-md-6 col-sm-6" style="height:250px">
-          <%= image_tag recipe.recipe_image.url(:medium) %>
+          <% if recipe.recipe_image_file_name == nil %>
+            <img src="assets/chef-icon-default.jpg">    
+          <% else %>
+            <%= image_tag recipe.recipe_image.url(:medium) %>
+          <% end %>
         </div>
     <% end %>
     </a>

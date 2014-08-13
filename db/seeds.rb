@@ -75,3 +75,9 @@ call_scraper("http://allrecipes.com/Recipe/Slow-Cooker-Chicken-and-Dumplings/Det
 call_scraper("http://allrecipes.com/Recipe/Alysons-Broccoli-Salad-2/Detail.aspx?evt19=1")
 call_scraper("http://allrecipes.com/Recipe/Classic-Macaroni-Salad/Detail.aspx?evt19=1")
 call_scraper("http://allrecipes.com/Recipe/Mexican-Bean-Salad/Detail.aspx?evt19=1")
+
+Recipe.all.each do |recipe|
+  if recipe.recipe_image_file_name == "http://images.media-allrecipes.com/images/44555.png"
+    recipe.destroy
+  end 
+end 

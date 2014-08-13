@@ -4,8 +4,10 @@
       <h3><%= current_user.name %>'s Cookbook</h3>
       <%= link_to 'Add a new recipe!', new_recipe_path, class: "btn btn-success" %>
       <div class="row">
-        <% current_user.recipes.order("created_at DESC").each do |recipe| %>
-          <%= render 'recipes/recipe', recipe: recipe %>
+        <% if current_user.recipes %>
+          <% current_user.recipes.order("created_at DESC").each do |recipe| %>
+            <%= render 'recipes/recipe', recipe: recipe %>
+          <% end %>
         <% end %>
       </div>
     </div>
