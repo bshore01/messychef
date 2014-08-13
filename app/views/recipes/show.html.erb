@@ -133,6 +133,9 @@
               </div>
 
               <h3><a href="#"><%= @recipe.title %></a></h3> 
+              <% if @recipe.creator %>
+                <p>Recipe created by: <%= @recipe.creator.name %></p>
+              <% end %>
               <% if logged_in? && !current_user.recipes.include?(@recipe) %>
                 <h3><button class="btn btn-success" id="add-to-cookbook">Add to Cookbook</button></h3>
               <% end %>
@@ -198,22 +201,6 @@
           </div>
             
         </div>
-
-
-        <div class="comments">
-          <% if @recipe.creator %>
-            <ul class="comment-list">
-              <li class="comment">
-                <a class="pull-left" href="#">
-                  <img class="avatar" src="" alt="">
-                </a>
-                <div class="comment-author"><a href="#"><%= @recipe.creator.name %></a></div>
-                <div class="clearfix"></div>
-              </li>
-            </ul>
-          <% end %>
-        </div>
-
       </div>
 
       <div class="flexslider">
@@ -234,7 +221,9 @@
       <div class="row">
         <%= link_to '<< Back', recipes_path, class: "btn btn-danger pull-left" %>
         &nbsp;&nbsp;
-        <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-danger" %>
+        <% if logged_in? && @recipe.creator_id && @recipe.creator_id == current_user.id %>
+          <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-danger" %>
+        <% end %>
       </div>
 
     </div>
