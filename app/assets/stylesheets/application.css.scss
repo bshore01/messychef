@@ -22,7 +22,10 @@
  *= require prettyPhoto
  *= require select2
  *= require select2-bootstrap
+ 
  */
+
+
 
 .wrapper {
   background-image: url(/assets/crossword.png);
@@ -38,7 +41,7 @@
     padding:0;
     text-align: center;
 
-    background-image: asset_url('landingbackground2.jpg');
+    background-image: image-url('landingbackground2.jpg');
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
