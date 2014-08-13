@@ -6,7 +6,7 @@
       <% when true %>
         <img src="<%= recipe.recipe_image_file_name %>">
       <% when false %>
-        <div class="col-md-6 col-sm-6" style="height:250px">
+        <div class="col-md-6 col-sm-6" style="height:250px;padding-left:0px">
           <% if recipe.recipe_image_file_name == nil %>
             <img src="assets/chef-icon-default.jpg">    
           <% else %>
