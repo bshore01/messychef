@@ -6,7 +6,7 @@
       $.ajax({
         url: "<%= add_recipe_to_cookbook_path %>",
         data: {
-          user_id: <%= current_user.id %>,
+          user_id: <%= current_user.id if current_user %>,
           recipe_id: <%= @recipe.id %>
         },
         dataType: "script"
@@ -139,10 +139,13 @@
 
               <hr>
 
-              <p><%= @recipe.description %>
-                <div id="share"> 
-                  <br><a href="#" class="facebook" data-social='{"type":"facebook", "url":"http://messychef.herokuapp.com/recipes/<%=@recipe.id%>", "text": ""}' title="">&nbsp &nbsp &nbsp Share with friends</a><br>
-              </div>
+              <p>
+                <%= @recipe.description %>
+                <% if logged_in? %>
+                  <div id="share"> 
+                    <br><a href="#" class="facebook" data-social='{"type":"facebook", "url":"http://messychef.herokuapp.com/recipes/<%=@recipe.id%>", "text": ""}' title="">&nbsp &nbsp &nbsp Share with friends</a><br>
+                  </div>
+                <% end %>
               </p>
 
               <div class="clearfix"></div>
