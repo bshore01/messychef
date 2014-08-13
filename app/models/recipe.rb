@@ -3,16 +3,13 @@ class MyValidator < ActiveModel::Validator
     if new_recipe.title.length < 2
       new_recipe.errors[:base] << "Must have a valid title."
     end
-    if new_recipe.description.length < 2
-      new_recipe.errors[:base] << "Must have a valid description."
-    end 
     new_recipe.recipe_ingredient_units.each do |riu|
-      if riu.ingredient.name.length < 2 && !new_recipe.errors[:base].include?("Ingredients must have a valid name.")
+      if riu.ingredient.name.length < 1 && !new_recipe.errors[:base].include?("Ingredients must have a valid name.")
         new_recipe.errors[:base] << "Ingredients must have a valid name."
       end 
-      if riu.unit.unit.length < 2 && !new_recipe.errors[:base].include?("Ingredients must have a valid unit.")
-        new_recipe.errors[:base] << "Ingredients must have a valid unit."
-      end 
+      # if riu.unit.unit.length < 1 && !new_recipe.errors[:base].include?("Ingredients must have a valid unit.")
+      #   new_recipe.errors[:base] << "Ingredients must have a valid unit."
+      # end 
     end 
     new_recipe.directions.each do |direction|
       if direction.description.length < 2 && !new_recipe.errors[:base].include?("Directions must have a valid description.")
