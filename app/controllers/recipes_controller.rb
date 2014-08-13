@@ -71,22 +71,25 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create 
+    
     # setup new instance
     @recipe = Recipe.new(
       :title => recipe_params[:title],
       :description => recipe_params[:description],
-       :recipe_image => recipe_params[:recipe_image]
+      :recipe_image => recipe_params[:recipe_image],
+      :creator_id => current_user.id
     )
-    @recipe.make_rius_from_params(recipe_params)
-    @recipe.make_directions_from_params(recipe_params)
+    @recipe.make_rius_from_params(recipe_params) if recipe_params[:recipe_ingredient_units].size > 0
+    @recipe.make_directions_from_params(recipe_params) if recipe_params[:directions].size > 0
 
-    if params[:add_to_cookbook] == "yes"
-      current_user.cookbooks.first.recipes << @recipe
-      current_user.save
-    end 
+    binding.pry
 
     respond_to do |format|
-      if @recipe.save 
+      if @recipe.save
+        if params[:add_to_cookbook] == "yes"
+          current_user.cookbooks.first.recipes << @recipe
+          current_user.save
+        end 
         format.html { redirect_to recipes_path, notice: 'Recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe }
       else

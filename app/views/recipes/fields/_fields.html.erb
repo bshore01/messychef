@@ -1,3 +1,15 @@
+<% if @recipe.errors.any? %>
+  <div id="error_explanation">
+    <h3><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h3>
+
+    <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= render 'recipes/fields/title', recipe: @recipe %>
 
 <hr>
