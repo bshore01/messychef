@@ -1,6 +1,17 @@
 <script>
   $(document).ready(function(){
     $("#share a").jqSocialSharer();
+
+    $("#add-to-cookbook").click(function(){
+      $.ajax({
+        url: "<%= add_recipe_to_cookbook_path %>",
+        data: {
+          user_id: <%= current_user.id if current_user %>,
+          recipe_id: <%= @recipe.id %>
+        },
+        dataType: "script"
+      });
+    });
   });  
 </script>
 
@@ -122,16 +133,22 @@
               </div>
 
               <h3><a href="#"><%= @recipe.title %></a></h3> 
+              <% if @recipe.creator %>
+                <p>Recipe created by: <%= @recipe.creator.name %></p>
+              <% end %>
               <% if logged_in? && !current_user.recipes.include?(@recipe) %>
-                <h3><button class="btn btn-success">Add to Cookbook</button></h3>
+                <h3><button class="btn btn-success" id="add-to-cookbook">Add to Cookbook</button></h3>
               <% end %>
 
               <hr>
 
-              <p><%= @recipe.description %>
-                <div id="share"> 
-                  <br><a href="#" class="facebook" data-social='{"type":"facebook", "url":"http://messychef.herokuapp.com/recipes/<%=@recipe.id%>", "text": ""}' title="">&nbsp &nbsp &nbsp Share with friends</a><br>
-              </div>
+              <p>
+                <%= @recipe.description %>
+                <% if logged_in? %>
+                  <div id="share"> 
+                    <br><a href="#" class="facebook" data-social='{"type":"facebook", "url":"http://messychef.herokuapp.com/recipes/<%=@recipe.id%>", "text": ""}' title="">&nbsp &nbsp &nbsp Share with friends</a><br>
+                  </div>
+                <% end %>
               </p>
 
               <div class="clearfix"></div>
@@ -186,22 +203,6 @@
           </div>
             
         </div>
-
-
-        <div class="comments">
-          <% if @recipe.creator %>
-            <ul class="comment-list">
-              <li class="comment">
-                <a class="pull-left" href="#">
-                  <img class="avatar" src="" alt="">
-                </a>
-                <div class="comment-author"><a href="#"><%= @recipe.creator.name %></a></div>
-                <div class="clearfix"></div>
-              </li>
-            </ul>
-          <% end %>
-        </div>
-
       </div>
 
       <div class="flexslider">
@@ -222,7 +223,9 @@
       <div class="row">
         <%= link_to '<< Back', recipes_path, class: "btn btn-danger pull-left" %>
         &nbsp;&nbsp;
-        <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-danger" %>
+        <% if logged_in? && @recipe.creator_id && @recipe.creator_id == current_user.id %>
+          <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-danger" %>
+        <% end %>
       </div>
 
     </div>
