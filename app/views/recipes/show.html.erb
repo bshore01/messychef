@@ -46,7 +46,7 @@
         resizable: false,
         buttons: dialogButtons,
         open: function() {
-          progressTimer = setTimeout( progress, 6000 );
+          progressTimer = setTimeout( progress, 7000 );
         },
         beforeClose: function() {
           downloadButton.button( "option", {
@@ -114,7 +114,7 @@
       content="<%=@recipe.description%>"/>
 
 
-<div id="interim">Start</div>
+
 
 <div class="inner-page padd">
   <div class="blog">
@@ -182,12 +182,15 @@
 
           <hr>
 
+          <h5> To scroll to the next direction, say "MessyChef Next", to go back, say "Go Back".</h5>
           <div class="row">
             <div class="col-md-8">
               <div class="recipe-item">
                 <div id="interim">Start</div>
+
                 <span id="dialog" title="">
-                  <img alt="Chef icon" class="img-responsive" style="margin-left:auto; margin-right: auto;"src="/assets/chef-icon.jpg">
+                  
+                  <%= image_tag "chef-icon.jpg", style: "margin-left:auto; margin-right: auto;", class: "img-responsive" %>
                   <span class="progress-label">Interpreting your beautiful voice...</span>
                   <span id="progressbar"></span>
                 </span>
