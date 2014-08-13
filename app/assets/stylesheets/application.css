@@ -50,7 +50,7 @@
 .searchh1 {
     font-size: 65px;
     color: white;
-    text-shadow: 1px 1px 1px #525051;
+    text-shadow: 3px 3px 3px #525051,1px 1px 1px black;
 }
 
 #landsearchform {
@@ -79,9 +79,11 @@
 #voice-search{
 
     border-radius: 50%;
-    border-style: solid;
+    height: 60px;
+    width: 60px;
+ border-style: solid;
     border-color: black;
-    background: white;
+    background: yellow;
 
    
 }
