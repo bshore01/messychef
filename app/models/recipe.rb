@@ -1,3 +1,27 @@
+class MyValidator < ActiveModel::Validator
+  def validate(new_recipe)
+    if new_recipe.title.length < 2
+      new_recipe.errors[:base] << "Must have a valid title."
+    end
+    if new_recipe.description.length < 2
+      new_recipe.errors[:base] << "Must have a valid description."
+    end 
+    new_recipe.recipe_ingredient_units.each do |riu|
+      if riu.ingredient.name.length < 2 && !new_recipe.errors[:base].include?("Ingredients must have a valid name.")
+        new_recipe.errors[:base] << "Ingredients must have a valid name."
+      end 
+      if riu.unit.unit.length < 2 && !new_recipe.errors[:base].include?("Ingredients must have a valid unit.")
+        new_recipe.errors[:base] << "Ingredients must have a valid unit."
+      end 
+    end 
+    new_recipe.directions.each do |direction|
+      if direction.description.length < 2 && !new_recipe.errors[:base].include?("Directions must have a valid description.")
+        new_recipe.errors[:base] << "Directions must have a valid description."
+      end 
+    end 
+  end 
+end 
+
 class Recipe < ActiveRecord::Base
   has_many :recipe_cookbooks
   has_many :cookbooks, through: :recipe_cookbooks
@@ -5,6 +29,8 @@ class Recipe < ActiveRecord::Base
   has_many :directions
   has_many :recipe_ingredient_units
   has_many :ingredients, through: :recipe_ingredient_units
+
+  validates_with MyValidator
 
   # Paperclip (upload image)
   has_attached_file :recipe_image , :styles => { :medium => "250x250>" },
