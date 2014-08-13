@@ -8,7 +8,7 @@
       <% when false %>
         <div class="col-md-6 col-sm-6" style="height:250px;padding-left:0px">
           <% if recipe.recipe_image_file_name == nil %>
-            <img src="assets/chef-icon-default.jpg">    
+            <%= image_tag "chef-icon.jpg", class: "img-responsive" %>
           <% else %>
             <%= image_tag recipe.recipe_image.url(:medium) %>
           <% end %>

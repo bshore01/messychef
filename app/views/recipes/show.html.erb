@@ -128,7 +128,7 @@
                 <% if @recipe.scraped == true %>
                   <img src="<%= @recipe.recipe_image_file_name %>" class="img-responsive img-thumbnail">
                 <% else %>
-                  <%#= image_tag recipe.recipe_image.url(:medium), class: "img-responsive img-thumbnail" %>
+                  <%= image_tag "chef-icon.jpg", class: "img-responsive" %>
                 <% end %>
               </div>
 
